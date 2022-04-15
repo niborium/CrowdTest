@@ -32887,7 +32887,340 @@ var Footer = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = Footer;
-},{"react":"node_modules/react/index.js"}],"src/app/index.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"src/app/api/api.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getAllpost = getAllpost;
+exports.postNewadd = postNewadd;
+var lskey = "ct-list"; //POST (Sends new post for adboard)
+
+function postNewadd(title, desc, devices, budget, nroftesters, startdate, enddate, author) {
+  //Get current list of ads (parsed from localStorage)
+  var existingPosts = JSON.parse(localStorage.getItem(lskey)) || []; //Converts budget and nroftesters (numbers) to strings for localStorage
+
+  var cbudget = budget.toString();
+  var cnroftesters = nroftesters.toString(); //Converts datetimes (startdate + enddate) to string for localStorage
+
+  var cstartdate = startdate.toString();
+  var cenddate = enddate.toString(); //Inputs for new post to be added to localStorage
+
+  var newPost = {
+    'id': generateId(7),
+    'title': title,
+    'description': desc,
+    'devicetotest': devices,
+    'budget': cbudget,
+    'nroftesters': cnroftesters,
+    'startdate': cstartdate,
+    'enddate': cenddate,
+    'author': author
+  }; //Functions to random id
+
+  function dec2hex(dec) {
+    return dec.toString(16).padStart(2, "0");
+  }
+
+  function generateId(len) {
+    var arr = new Uint8Array((len || 40) / 2);
+    window.crypto.getRandomValues(arr);
+    return Array.from(arr, dec2hex).join('');
+  } //Merge new post with existingPosts
+
+
+  existingPosts.push(newPost); //Push to localStorage
+
+  localStorage.setItem(lskey, JSON.stringify(existingPosts));
+} //GET (Gets all posts from localStorage for adboard)
+
+
+function getAllpost() {
+  var posts = JSON.parse(localStorage.getItem(lskey) || "[]");
+  return posts;
+}
+},{}],"src/app/components/adboard.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var api = _interopRequireWildcard(require("../api/api.js"));
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var AdBoard = /*#__PURE__*/function (_Component) {
+  _inherits(AdBoard, _Component);
+
+  var _super = _createSuper(AdBoard);
+
+  function AdBoard(props) {
+    var _this;
+
+    _classCallCheck(this, AdBoard);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      list: [] //list: api.getAllpost()
+
+    };
+    return _this;
+  }
+
+  _createClass(AdBoard, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.timerID = setInterval(function () {
+        return _this2.tick();
+      }, 1000);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      clearInterval(this.timerID);
+    }
+  }, {
+    key: "tick",
+    value: function tick() {
+      this.setState({
+        list: api.getAllpost()
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return (
+        /*#__PURE__*/
+
+        /*     <div>
+                <ul>
+                {this.state.list.map(item => (
+                    <li key={item}>{item}</li>
+                ))}
+                </ul>
+            </div> */
+        _react.default.createElement("div", {
+          className: "m-4"
+        }, /*#__PURE__*/_react.default.createElement("div", {
+          className: "table-responsive"
+        }, /*#__PURE__*/_react.default.createElement("table", {
+          className: "table"
+        }, /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("th", null, "#id"), /*#__PURE__*/_react.default.createElement("th", null, "Titel:"), /*#__PURE__*/_react.default.createElement("th", null, "Beskrivning:"), /*#__PURE__*/_react.default.createElement("th", null, "Enheter att testa p\xE5:"), /*#__PURE__*/_react.default.createElement("th", null, "Budget:"), /*#__PURE__*/_react.default.createElement("th", null, "Antal testare som beh\xF6vs:"), /*#__PURE__*/_react.default.createElement("th", null, "Startdatum:"), /*#__PURE__*/_react.default.createElement("th", null, "Slutdatum:"), /*#__PURE__*/_react.default.createElement("th", null, "Publicerad av:"))), /*#__PURE__*/_react.default.createElement("tbody", null, this.state.list.map(function (data) {
+          return /*#__PURE__*/_react.default.createElement("tr", {
+            key: data.id
+          }, /*#__PURE__*/_react.default.createElement("td", null, data.id), /*#__PURE__*/_react.default.createElement("td", null, data.title), /*#__PURE__*/_react.default.createElement("td", null, data.description), /*#__PURE__*/_react.default.createElement("td", null, data.devicetotest), /*#__PURE__*/_react.default.createElement("td", null, data.budget), /*#__PURE__*/_react.default.createElement("td", null, data.nroftesters), /*#__PURE__*/_react.default.createElement("td", null, data.startdate), /*#__PURE__*/_react.default.createElement("td", null, data.enddate), /*#__PURE__*/_react.default.createElement("td", null, data.author));
+        })))))
+      );
+    }
+  }]);
+
+  return AdBoard;
+}(_react.Component);
+
+var _default = AdBoard;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../api/api.js":"src/app/api/api.js"}],"src/app/components/adform.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AdForm = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var api = _interopRequireWildcard(require("../api/api.js"));
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var AdForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(AdForm, _React$Component);
+
+  var _super = _createSuper(AdForm);
+
+  function AdForm(props) {
+    var _this;
+
+    _classCallCheck(this, AdForm);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleReset", function () {
+      document.querySelectorAll('input');
+
+      _this.setState({
+        title: [''],
+        desc: [''],
+        devicetotest: [''],
+        budget: [''],
+        nroftesters: [''],
+        startdate: [''],
+        enddate: ['']
+      });
+    });
+
+    _this.state = {
+      title: '',
+      desc: '',
+      devicetotest: '',
+      budget: '',
+      nroftesters: '',
+      startdate: '',
+      enddate: ''
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(AdForm, [{
+    key: "handleChange",
+    value: function handleChange(event, field) {
+      this.setState(_defineProperty({}, field, event.target.value));
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      api.postNewadd(this.state.title, this.state.desc, this.state.devicetotest, this.state.budget, this.state.nroftesters, this.state.startdate, this.state.enddate, "admin");
+      this.handleReset(); //TILLFÄLLIGT FÖR ATT SKRIVA UT ALLA ANNONSER
+
+      api.getAllpost(); //unmountComponentAtNode(document.getElementById('root'));
+
+      event.preventDefault();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return /*#__PURE__*/_react.default.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/_react.default.createElement("label", null, "Titel:", /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        required: true,
+        value: this.state.title,
+        onChange: function onChange(event) {
+          return _this2.handleChange(event, "title");
+        }
+      }), /*#__PURE__*/_react.default.createElement("br", null), "Beskrivning:", /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        required: true,
+        value: this.state.desc,
+        onChange: function onChange(event) {
+          return _this2.handleChange(event, "desc");
+        }
+      }), /*#__PURE__*/_react.default.createElement("br", null), "Enheter att testa p\xE5:", /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        required: true,
+        value: this.state.devicetotest,
+        onChange: function onChange(event) {
+          return _this2.handleChange(event, "devicetotest");
+        }
+      }), /*#__PURE__*/_react.default.createElement("br", null), "Budget:", /*#__PURE__*/_react.default.createElement("input", {
+        type: "number",
+        required: true,
+        min: "1",
+        value: this.state.budget,
+        onChange: function onChange(event) {
+          return _this2.handleChange(event, "budget");
+        }
+      }), /*#__PURE__*/_react.default.createElement("br", null), "Antal testare:", /*#__PURE__*/_react.default.createElement("input", {
+        type: "number",
+        required: true,
+        min: "1",
+        value: this.state.nroftesters,
+        onChange: function onChange(event) {
+          return _this2.handleChange(event, "nroftesters");
+        }
+      }), /*#__PURE__*/_react.default.createElement("br", null), "Startdatum f\xF6r test:", /*#__PURE__*/_react.default.createElement("input", {
+        type: "datetime-local",
+        required: true,
+        value: this.state.startdate,
+        onChange: function onChange(event) {
+          return _this2.handleChange(event, "startdate");
+        }
+      }), /*#__PURE__*/_react.default.createElement("br", null), "Slutdatum f\xF6r test:", /*#__PURE__*/_react.default.createElement("input", {
+        type: "datetime-local",
+        required: true,
+        value: this.state.enddate,
+        onChange: function onChange(event) {
+          return _this2.handleChange(event, "enddate");
+        }
+      }), /*#__PURE__*/_react.default.createElement("br", null)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("input", {
+        type: "submit",
+        value: "Skicka"
+      }));
+    }
+  }]);
+
+  return AdForm;
+}(_react.default.Component);
+
+exports.AdForm = AdForm;
+; //ReactDOM.render(
+//    <NameForm />,
+//    document.getElementById('root')
+//);
+},{"react":"node_modules/react/index.js","../api/api.js":"src/app/api/api.js"}],"src/app/index.jsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -32896,12 +33229,16 @@ var _client = require("react-dom/client");
 
 var _footer = _interopRequireDefault(require("./components/footer.jsx"));
 
+var _adboard = _interopRequireDefault(require("./components/adboard.jsx"));
+
+var _adform = require("./components/adform.jsx");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var container = document.getElementById('root');
 var root = (0, _client.createRoot)(container);
-root.render( /*#__PURE__*/_react.default.createElement(_footer.default, null));
-},{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","./components/footer.jsx":"src/app/components/footer.jsx"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+root.render( /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_adboard.default, null), /*#__PURE__*/_react.default.createElement(_adform.AdForm, null), /*#__PURE__*/_react.default.createElement(_footer.default, null)));
+},{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","./components/footer.jsx":"src/app/components/footer.jsx","./components/adboard.jsx":"src/app/components/adboard.jsx","./components/adform.jsx":"src/app/components/adform.jsx"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -32929,7 +33266,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56490" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50295" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
