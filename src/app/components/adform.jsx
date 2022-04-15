@@ -34,8 +34,6 @@ export class AdForm extends React.Component {
             "admin"
             );
         this.handleReset();
-        //TILLFÄLLIGT FÖR ATT SKRIVA UT ALLA ANNONSER
-        api.getAllpost();
         //unmountComponentAtNode(document.getElementById('root'));
         event.preventDefault();
     }
