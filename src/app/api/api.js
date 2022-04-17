@@ -1,4 +1,6 @@
 const lskey = "ct-list";
+const authkey = "ct-auth"
+
 //POST (Sends new post for adboard)
 export function postNewadd(title, desc, devices, budget, nroftesters, startdate, enddate, author) {
     //Get current list of ads (parsed from localStorage)
@@ -45,4 +47,15 @@ export function postNewadd(title, desc, devices, budget, nroftesters, startdate,
 export function getAllpost(){
     var posts = JSON.parse(localStorage.getItem(lskey) || "[]");
     return posts;
+}
+
+export function loginUser(setRole){
+    var userInfo = {
+    'authenticated': true,    
+    'role': setRole,
+    }   
+    localStorage.setItem(authkey,JSON.stringify(userInfo));
+}
+export function logoutUser(){
+    localStorage.removeItem(authkey);
 }
