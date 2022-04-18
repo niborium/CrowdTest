@@ -8,9 +8,9 @@ export class LoginControl extends React.Component {
         this.handleLogoutClick = this.handleLogoutClick.bind(this);
         this.state = {isLoggedIn: false};
     }
-    handleLoginClick(setRole) {
+    handleLoginClick(setAccount, setRole) {
         this.setState({isLoggedIn: true});
-        api.loginUser(setRole);
+        api.loginUser(setAccount, setRole);
     }
     handleLogoutClick() {
         this.setState({isLoggedIn: false});
@@ -22,8 +22,8 @@ export class LoginControl extends React.Component {
 
         if (this.state.isLoggedIn === false) {
             return (
-                <><button id="btnLat" className="btn btn-success" onClick={() => this.handleLoginClick(loginasTester)}>Logga in som testare</button>&nbsp;&nbsp;
-                <button id="btnLac" className="btn btn-success" onClick={() => this.handleLoginClick(loginasCompany)}>Logga in som företag</button></>
+                <><button id="btnLat" className="btn btn-success" onClick={() => this.handleLoginClick("testkonto-testare",loginasTester)}>Logga in som testare</button>&nbsp;&nbsp;
+                <button id="btnLac" className="btn btn-success" onClick={() => this.handleLoginClick("testkonto-företag",loginasCompany)}>Logga in som företag</button></>
             );
             } else {
             return (

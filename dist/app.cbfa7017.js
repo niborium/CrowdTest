@@ -32903,9 +32903,9 @@ function getAllpost() {
   return posts;
 }
 
-function loginUser(setRole) {
+function loginUser(setAccount, setRole) {
   var userInfo = {
-    'authenticated': true,
+    'account': setAccount,
     'role': setRole
   };
   localStorage.setItem(authkey, JSON.stringify(userInfo));
@@ -33280,11 +33280,11 @@ var LoginControl = /*#__PURE__*/function (_React$Component) {
 
   _createClass(LoginControl, [{
     key: "handleLoginClick",
-    value: function handleLoginClick(setRole) {
+    value: function handleLoginClick(setAccount, setRole) {
       this.setState({
         isLoggedIn: true
       });
-      api.loginUser(setRole);
+      api.loginUser(setAccount, setRole);
     }
   }, {
     key: "handleLogoutClick",
@@ -33307,13 +33307,13 @@ var LoginControl = /*#__PURE__*/function (_React$Component) {
           id: "btnLat",
           className: "btn btn-success",
           onClick: function onClick() {
-            return _this2.handleLoginClick(loginasTester);
+            return _this2.handleLoginClick("testkonto-testare", loginasTester);
           }
         }, "Logga in som testare"), "\xA0\xA0", /*#__PURE__*/_react.default.createElement("button", {
           id: "btnLac",
           className: "btn btn-success",
           onClick: function onClick() {
-            return _this2.handleLoginClick(loginasCompany);
+            return _this2.handleLoginClick("testkonto-företag", loginasCompany);
           }
         }, "Logga in som f\xF6retag"));
       } else {
@@ -33403,7 +33403,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56597" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65223" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

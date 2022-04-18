@@ -49,9 +49,9 @@ export function getAllpost(){
     return posts;
 }
 
-export function loginUser(setRole){
+export function loginUser(setAccount, setRole){
     var userInfo = {
-    'authenticated': true,    
+    'account': setAccount,    
     'role': setRole,
     }   
     localStorage.setItem(authkey,JSON.stringify(userInfo));
