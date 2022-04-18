@@ -7,6 +7,15 @@ footer {
     color: white;
     text-align: center;
 }
+body {
+    text-align: center;
+}
+form {
+    display: inline-block;
+}
+#menu{
+    height: 100px;
+}
 #btnLat, #btnLac, #btnLo {
     float: right;
 }

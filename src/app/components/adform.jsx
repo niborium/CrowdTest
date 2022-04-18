@@ -54,23 +54,45 @@ export class AdForm extends React.Component {
     render() {
     return (
         <form onSubmit={this.handleSubmit}>
-        <label>
-            Titel:
-            <input type="text" required value={this.state.title} onChange={(event)=>this.handleChange(event, "title")} /><br></br>
-            Beskrivning:
-            <input type="text" required value={this.state.desc} onChange={(event)=>this.handleChange(event, "desc")} /><br></br>
-            Enheter att testa på:
-            <input type="text" required value={this.state.devicetotest} onChange={(event)=>this.handleChange(event, "devicetotest")} /><br></br>
-            Budget:
-            <input type="number" required min="1" value={this.state.budget} onChange={(event)=>this.handleChange(event, "budget")} /><br></br>
-            Antal testare:
-            <input type="number" required min="1" value={this.state.nroftesters} onChange={(event)=>this.handleChange(event, "nroftesters")} /><br></br>
-            Startdatum för test:
-            <input type="datetime-local" required value={this.state.startdate} onChange={(event)=>this.handleChange(event, "startdate")} /><br></br>
-            Slutdatum för test:
-            <input type="datetime-local"required value={this.state.enddate} onChange={(event)=>this.handleChange(event, "enddate")} /><br></br>
-        </label><br></br>
-        <input type="submit" value="Skicka" />
+            <div className="row">
+                <div className="col">
+                    <input type="text" className="form-control" placeholder="Titel" required value={this.state.title} onChange={(event)=>this.handleChange(event, "title")} /><br></br>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <input type="text" className="form-control" placeholder="Beskrivning" required value={this.state.desc} onChange={(event)=>this.handleChange(event, "desc")} /><br></br>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <input type="text" className="form-control" placeholder="Enhet att testa på" required value={this.state.devicetotest} onChange={(event)=>this.handleChange(event, "devicetotest")} /><br></br>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <input type="text" className="form-control" placeholder="Budget" min="1" required value={this.state.budget} onChange={(event)=>this.handleChange(event, "budget")} /><br></br>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <input type="text" className="form-control" placeholder="Antal testare" min="1" required value={this.state.nroftesters} onChange={(event)=>this.handleChange(event, "nroftesters")} /><br></br>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    Startdatum för test
+                    <input type="date" className="form-control" required value={this.state.startdate} onChange={(event)=>this.handleChange(event, "startdate")} /><br></br>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    Slutdatum för test
+                    <input type="date" className="form-control" required value={this.state.enddate} onChange={(event)=>this.handleChange(event, "enddate")} /><br></br>
+                </div>
+            </div>
+            <br></br>
+            <input type="submit" className="btn btn-primary mb-3" value="Lägg till ny annons" />
         </form>
     );
     }

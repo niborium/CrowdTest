@@ -33115,60 +33115,101 @@ var AdForm = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/_react.default.createElement("form", {
         onSubmit: this.handleSubmit
-      }, /*#__PURE__*/_react.default.createElement("label", null, "Titel:", /*#__PURE__*/_react.default.createElement("input", {
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "col"
+      }, /*#__PURE__*/_react.default.createElement("input", {
         type: "text",
+        className: "form-control",
+        placeholder: "Titel",
         required: true,
         value: this.state.title,
         onChange: function onChange(event) {
           return _this2.handleChange(event, "title");
         }
-      }), /*#__PURE__*/_react.default.createElement("br", null), "Beskrivning:", /*#__PURE__*/_react.default.createElement("input", {
+      }), /*#__PURE__*/_react.default.createElement("br", null))), /*#__PURE__*/_react.default.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "col"
+      }, /*#__PURE__*/_react.default.createElement("input", {
         type: "text",
+        className: "form-control",
+        placeholder: "Beskrivning",
         required: true,
         value: this.state.desc,
         onChange: function onChange(event) {
           return _this2.handleChange(event, "desc");
         }
-      }), /*#__PURE__*/_react.default.createElement("br", null), "Enheter att testa p\xE5:", /*#__PURE__*/_react.default.createElement("input", {
+      }), /*#__PURE__*/_react.default.createElement("br", null))), /*#__PURE__*/_react.default.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "col"
+      }, /*#__PURE__*/_react.default.createElement("input", {
         type: "text",
+        className: "form-control",
+        placeholder: "Enhet att testa p\xE5",
         required: true,
         value: this.state.devicetotest,
         onChange: function onChange(event) {
           return _this2.handleChange(event, "devicetotest");
         }
-      }), /*#__PURE__*/_react.default.createElement("br", null), "Budget:", /*#__PURE__*/_react.default.createElement("input", {
-        type: "number",
-        required: true,
+      }), /*#__PURE__*/_react.default.createElement("br", null))), /*#__PURE__*/_react.default.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "col"
+      }, /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        className: "form-control",
+        placeholder: "Budget",
         min: "1",
+        required: true,
         value: this.state.budget,
         onChange: function onChange(event) {
           return _this2.handleChange(event, "budget");
         }
-      }), /*#__PURE__*/_react.default.createElement("br", null), "Antal testare:", /*#__PURE__*/_react.default.createElement("input", {
-        type: "number",
-        required: true,
+      }), /*#__PURE__*/_react.default.createElement("br", null))), /*#__PURE__*/_react.default.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "col"
+      }, /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        className: "form-control",
+        placeholder: "Antal testare",
         min: "1",
+        required: true,
         value: this.state.nroftesters,
         onChange: function onChange(event) {
           return _this2.handleChange(event, "nroftesters");
         }
-      }), /*#__PURE__*/_react.default.createElement("br", null), "Startdatum f\xF6r test:", /*#__PURE__*/_react.default.createElement("input", {
-        type: "datetime-local",
+      }), /*#__PURE__*/_react.default.createElement("br", null))), /*#__PURE__*/_react.default.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "col"
+      }, "Startdatum f\xF6r test", /*#__PURE__*/_react.default.createElement("input", {
+        type: "date",
+        className: "form-control",
         required: true,
         value: this.state.startdate,
         onChange: function onChange(event) {
           return _this2.handleChange(event, "startdate");
         }
-      }), /*#__PURE__*/_react.default.createElement("br", null), "Slutdatum f\xF6r test:", /*#__PURE__*/_react.default.createElement("input", {
-        type: "datetime-local",
+      }), /*#__PURE__*/_react.default.createElement("br", null))), /*#__PURE__*/_react.default.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "col"
+      }, "Slutdatum f\xF6r test", /*#__PURE__*/_react.default.createElement("input", {
+        type: "date",
+        className: "form-control",
         required: true,
         value: this.state.enddate,
         onChange: function onChange(event) {
           return _this2.handleChange(event, "enddate");
         }
-      }), /*#__PURE__*/_react.default.createElement("br", null)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("input", {
+      }), /*#__PURE__*/_react.default.createElement("br", null))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("input", {
         type: "submit",
-        value: "Skicka"
+        className: "btn btn-primary mb-3",
+        value: "L\xE4gg till ny annons"
       }));
     }
   }]);
@@ -33310,7 +33351,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function Menu() {
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "p-3 mb-2 bg-dark text-white"
+    className: "p-3 mb-2 bg-dark text-white",
+    id: "menu"
   }, /*#__PURE__*/_react.default.createElement(_logincontrol.LoginControl, null));
 }
 },{"react":"node_modules/react/index.js","./logincontrol.jsx":"src/app/components/logincontrol.jsx"}],"src/app/index.jsx":[function(require,module,exports) {
@@ -33361,7 +33403,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64013" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56597" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
