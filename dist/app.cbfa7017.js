@@ -33304,11 +33304,13 @@ var LoginControl = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.isLoggedIn === false) {
         return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
+          id: "btnLat",
           className: "btn btn-success",
           onClick: function onClick() {
             return _this2.handleLoginClick(loginasTester);
           }
         }, "Logga in som testare"), "\xA0\xA0", /*#__PURE__*/_react.default.createElement("button", {
+          id: "btnLac",
           className: "btn btn-success",
           onClick: function onClick() {
             return _this2.handleLoginClick(loginasCompany);
@@ -33316,6 +33318,7 @@ var LoginControl = /*#__PURE__*/function (_React$Component) {
         }, "Logga in som f\xF6retag"));
       } else {
         return /*#__PURE__*/_react.default.createElement("button", {
+          id: "btnLo",
           className: "btn btn-danger",
           onClick: this.handleLogoutClick
         }, "Logga ut");
@@ -33347,7 +33350,9 @@ var _logincontrol = require("./logincontrol.jsx");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Menu() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_logincontrol.LoginControl, null));
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "p-3 mb-2 bg-dark text-white"
+  }, /*#__PURE__*/_react.default.createElement(_logincontrol.LoginControl, null));
 }
 },{"react":"node_modules/react/index.js","./logincontrol.jsx":"src/app/components/logincontrol.jsx"}],"src/app/index.jsx":[function(require,module,exports) {
 "use strict";
@@ -33397,7 +33402,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60790" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61123" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
