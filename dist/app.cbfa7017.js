@@ -33304,19 +33304,19 @@ var LoginControl = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.isLoggedIn === false) {
         return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
-          class: "btn btn-success",
+          className: "btn btn-success",
           onClick: function onClick() {
             return _this2.handleLoginClick(loginasTester);
           }
         }, "Logga in som testare"), "\xA0\xA0", /*#__PURE__*/_react.default.createElement("button", {
-          class: "btn btn-success",
+          className: "btn btn-success",
           onClick: function onClick() {
             return _this2.handleLoginClick(loginasCompany);
           }
         }, "Logga in som f\xF6retag"));
       } else {
         return /*#__PURE__*/_react.default.createElement("button", {
-          class: "btn btn-danger",
+          className: "btn btn-danger",
           onClick: this.handleLogoutClick
         }, "Logga ut");
       }
@@ -33397,7 +33397,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61274" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60790" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

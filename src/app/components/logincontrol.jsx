@@ -22,12 +22,12 @@ export class LoginControl extends React.Component {
 
         if (this.state.isLoggedIn === false) {
             return (
-                <><button class="btn btn-success" onClick={() => this.handleLoginClick(loginasTester)}>Logga in som testare</button>&nbsp;&nbsp;
-                <button class="btn btn-success" onClick={() => this.handleLoginClick(loginasCompany)}>Logga in som företag</button></>
+                <><button className="btn btn-success" onClick={() => this.handleLoginClick(loginasTester)}>Logga in som testare</button>&nbsp;&nbsp;
+                <button className="btn btn-success" onClick={() => this.handleLoginClick(loginasCompany)}>Logga in som företag</button></>
             );
             } else {
             return (
-                <button class="btn btn-danger" onClick={this.handleLogoutClick}>Logga ut</button>
+                <button className="btn btn-danger" onClick={this.handleLogoutClick}>Logga ut</button>
             );
         }
     }
