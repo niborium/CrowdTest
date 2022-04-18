@@ -33005,8 +33005,7 @@ var AdBoard = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      list: [] //list: api.getAllpost()
-
+      list: []
     };
     return _this;
   }
@@ -33035,28 +33034,17 @@ var AdBoard = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return (
-        /*#__PURE__*/
-
-        /*     <div>
-                <ul>
-                {this.state.list.map(item => (
-                    <li key={item}>{item}</li>
-                ))}
-                </ul>
-            </div> */
-        _react.default.createElement("div", {
-          className: "m-4"
-        }, /*#__PURE__*/_react.default.createElement("div", {
-          className: "table-responsive"
-        }, /*#__PURE__*/_react.default.createElement("table", {
-          className: "table"
-        }, /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("th", null, "#id"), /*#__PURE__*/_react.default.createElement("th", null, "Titel:"), /*#__PURE__*/_react.default.createElement("th", null, "Beskrivning:"), /*#__PURE__*/_react.default.createElement("th", null, "Enheter att testa p\xE5:"), /*#__PURE__*/_react.default.createElement("th", null, "Budget:"), /*#__PURE__*/_react.default.createElement("th", null, "Antal testare som beh\xF6vs:"), /*#__PURE__*/_react.default.createElement("th", null, "Startdatum:"), /*#__PURE__*/_react.default.createElement("th", null, "Slutdatum:"), /*#__PURE__*/_react.default.createElement("th", null, "Publicerad av:"))), /*#__PURE__*/_react.default.createElement("tbody", null, this.state.list.map(function (data) {
-          return /*#__PURE__*/_react.default.createElement("tr", {
-            key: data.id
-          }, /*#__PURE__*/_react.default.createElement("td", null, data.id), /*#__PURE__*/_react.default.createElement("td", null, data.title), /*#__PURE__*/_react.default.createElement("td", null, data.description), /*#__PURE__*/_react.default.createElement("td", null, data.devicetotest), /*#__PURE__*/_react.default.createElement("td", null, data.budget), /*#__PURE__*/_react.default.createElement("td", null, data.nroftesters), /*#__PURE__*/_react.default.createElement("td", null, data.startdate), /*#__PURE__*/_react.default.createElement("td", null, data.enddate), /*#__PURE__*/_react.default.createElement("td", null, data.author));
-        })))))
-      );
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "m-4"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "table-responsive"
+      }, /*#__PURE__*/_react.default.createElement("table", {
+        className: "table table-dark table-striped"
+      }, /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("th", null, "#id"), /*#__PURE__*/_react.default.createElement("th", null, "Titel:"), /*#__PURE__*/_react.default.createElement("th", null, "Beskrivning:"), /*#__PURE__*/_react.default.createElement("th", null, "Enheter att testa p\xE5:"), /*#__PURE__*/_react.default.createElement("th", null, "Budget:"), /*#__PURE__*/_react.default.createElement("th", null, "Antal testare som beh\xF6vs:"), /*#__PURE__*/_react.default.createElement("th", null, "Startdatum:"), /*#__PURE__*/_react.default.createElement("th", null, "Slutdatum:"), /*#__PURE__*/_react.default.createElement("th", null, "Publicerad av:"))), /*#__PURE__*/_react.default.createElement("tbody", null, this.state.list.map(function (data) {
+        return /*#__PURE__*/_react.default.createElement("tr", {
+          key: data.id
+        }, /*#__PURE__*/_react.default.createElement("td", null, data.id), /*#__PURE__*/_react.default.createElement("td", null, data.title), /*#__PURE__*/_react.default.createElement("td", null, data.description), /*#__PURE__*/_react.default.createElement("td", null, data.devicetotest), /*#__PURE__*/_react.default.createElement("td", null, data.budget), /*#__PURE__*/_react.default.createElement("td", null, data.nroftesters), /*#__PURE__*/_react.default.createElement("td", null, data.startdate), /*#__PURE__*/_react.default.createElement("td", null, data.enddate), /*#__PURE__*/_react.default.createElement("td", null, data.author));
+      })))));
     }
   }]);
 
@@ -33316,16 +33304,19 @@ var LoginControl = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.isLoggedIn === false) {
         return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
+          class: "btn btn-success",
           onClick: function onClick() {
             return _this2.handleLoginClick(loginasTester);
           }
-        }, "Logga in som testare"), /*#__PURE__*/_react.default.createElement("button", {
+        }, "Logga in som testare"), "\xA0\xA0", /*#__PURE__*/_react.default.createElement("button", {
+          class: "btn btn-success",
           onClick: function onClick() {
             return _this2.handleLoginClick(loginasCompany);
           }
         }, "Logga in som f\xF6retag"));
       } else {
         return /*#__PURE__*/_react.default.createElement("button", {
+          class: "btn btn-danger",
           onClick: this.handleLogoutClick
         }, "Logga ut");
       }
@@ -33341,7 +33332,24 @@ var LoginControl = /*#__PURE__*/function (_React$Component) {
 
 
 exports.LoginControl = LoginControl;
-},{"react":"node_modules/react/index.js","../api/api.js":"src/app/api/api.js"}],"src/app/index.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../api/api.js":"src/app/api/api.js"}],"src/app/components/menu.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Menu = Menu;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _logincontrol = require("./logincontrol.jsx");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Menu() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_logincontrol.LoginControl, null));
+}
+},{"react":"node_modules/react/index.js","./logincontrol.jsx":"src/app/components/logincontrol.jsx"}],"src/app/index.jsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -33354,14 +33362,14 @@ var _adboard = _interopRequireDefault(require("./components/adboard.jsx"));
 
 var _adform = require("./components/adform.jsx");
 
-var _logincontrol = require("./components/logincontrol.jsx");
+var _menu = require("./components/menu.jsx");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var container = document.getElementById('root');
 var root = (0, _client.createRoot)(container);
-root.render( /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_logincontrol.LoginControl, null), /*#__PURE__*/_react.default.createElement(_adboard.default, null), /*#__PURE__*/_react.default.createElement(_adform.AdForm, null), /*#__PURE__*/_react.default.createElement(_footer.default, null)));
-},{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","./components/footer.jsx":"src/app/components/footer.jsx","./components/adboard.jsx":"src/app/components/adboard.jsx","./components/adform.jsx":"src/app/components/adform.jsx","./components/logincontrol.jsx":"src/app/components/logincontrol.jsx"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+root.render( /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_menu.Menu, null), /*#__PURE__*/_react.default.createElement(_adboard.default, null), /*#__PURE__*/_react.default.createElement(_adform.AdForm, null), /*#__PURE__*/_react.default.createElement(_footer.default, null)));
+},{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","./components/footer.jsx":"src/app/components/footer.jsx","./components/adboard.jsx":"src/app/components/adboard.jsx","./components/adform.jsx":"src/app/components/adform.jsx","./components/menu.jsx":"src/app/components/menu.jsx"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -33389,7 +33397,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54583" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61274" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

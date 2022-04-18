@@ -6,7 +6,6 @@ constructor(props) {
     super(props);
     this.state = {
     list: [],
-    //list: api.getAllpost()
     };
 }
 componentDidMount() {
@@ -29,17 +28,9 @@ tick() {
 render() {
 
     return (
-
-/*     <div>
-        <ul>
-        {this.state.list.map(item => (
-            <li key={item}>{item}</li>
-        ))}
-        </ul>
-    </div> */
         <div className="m-4">
             <div className="table-responsive"> 
-                <table className="table">
+                <table className="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th>#id</th>
