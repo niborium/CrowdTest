@@ -33133,9 +33133,9 @@ var AdForm = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
         className: "modal fade",
-        id: "exampleModal",
+        id: "adformModal",
         tabIndex: "-1",
-        "aria-labelledby": "exampleModalLabel",
+        "aria-labelledby": "adformModalLabel",
         "aria-hidden": "true"
       }, /*#__PURE__*/_react.default.createElement("div", {
         className: "modal-dialog"
@@ -33145,7 +33145,7 @@ var AdForm = /*#__PURE__*/function (_React$Component) {
         className: "modal-header"
       }, /*#__PURE__*/_react.default.createElement("h5", {
         className: "modal-title",
-        id: "exampleModalLabel"
+        id: "adformModalLabel"
       }, "L\xE4gg till ny annons"), /*#__PURE__*/_react.default.createElement("button", {
         type: "button",
         className: "btn-close",
@@ -33373,7 +33373,7 @@ var LoginControl = /*#__PURE__*/function (_React$Component) {
           id: "btnAf",
           className: "btn btn-primary",
           "data-bs-toggle": "modal",
-          "data-bs-target": "#exampleModal"
+          "data-bs-target": "#adformModal"
         }, "L\xE4gg till ny annons"));
       } else {
         return /*#__PURE__*/_react.default.createElement("button", {
@@ -33457,7 +33457,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59597" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60050" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

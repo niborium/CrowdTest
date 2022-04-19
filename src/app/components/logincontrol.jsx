@@ -29,7 +29,7 @@ export class LoginControl extends React.Component {
             } else if (api.currentRole() === loginasCompany){
                 return(
                 <><button id="btnLo" className="btn btn-danger" onClick={this.handleLogoutClick}>Logga ut som {api.currentUser()}</button>
-                <button id="btnAf" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button id="btnAf" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adformModal">
                         Lägg till ny annons
                     </button></>
                 );
