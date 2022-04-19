@@ -104,13 +104,13 @@ export class AdForm extends React.Component {
                 <div className="row">
                     <div className="col">
                         Startdatum för test
-                        <input type="date" className="form-control" required value={this.state.startdate} onChange={(event) => this.handleChange(event, "startdate")} /><br></br>
+                        <input type="date" className="form-control" required max={this.state.enddate} value={this.state.startdate} onChange={(event) => this.handleChange(event, "startdate")} /><br></br>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col">
                         Slutdatum för test
-                        <input type="date" className="form-control" required value={this.state.enddate} onChange={(event) => this.handleChange(event, "enddate")} /><br></br>
+                        <input type="date" className="form-control" required min={this.state.startdate} value={this.state.enddate} onChange={(event) => this.handleChange(event, "enddate")} /><br></br>
                     </div>
                 </div>
                 <br></br>
