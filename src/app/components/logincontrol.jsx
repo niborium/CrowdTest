@@ -1,6 +1,5 @@
 import React from "react";
 import * as api from "../api/api.js"
-import { AdForm }  from "./adform.jsx"
 
 export class LoginControl extends React.Component {
     constructor(props) {
