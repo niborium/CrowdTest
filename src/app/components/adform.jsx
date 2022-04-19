@@ -11,7 +11,8 @@ export class AdForm extends React.Component {
             budget: '',
             nroftesters: '',
             startdate: '',
-            enddate: ''
+            enddate: '',
+            author: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -19,7 +20,7 @@ export class AdForm extends React.Component {
     }
 
     handleChange(event, field) {
-        this.setState({ [field]: event.target.value });
+        this.setState({ [field]: event.target.value, author: api.currentUser() });
     }
 
     handleSubmit(event) {
@@ -31,10 +32,9 @@ export class AdForm extends React.Component {
             this.state.nroftesters, 
             this.state.startdate, 
             this.state.enddate, 
-            api.currentUser()
+            this.state.author
             );
         this.handleReset();
-        //unmountComponentAtNode(document.getElementById('root'));
         event.preventDefault();
     }
     handleReset = () => {

@@ -33106,7 +33106,8 @@ var AdForm = /*#__PURE__*/function (_React$Component) {
       budget: '',
       nroftesters: '',
       startdate: '',
-      enddate: ''
+      enddate: '',
+      author: ''
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -33116,14 +33117,15 @@ var AdForm = /*#__PURE__*/function (_React$Component) {
   _createClass(AdForm, [{
     key: "handleChange",
     value: function handleChange(event, field) {
-      this.setState(_defineProperty({}, field, event.target.value));
+      var _this$setState;
+
+      this.setState((_this$setState = {}, _defineProperty(_this$setState, field, event.target.value), _defineProperty(_this$setState, "author", api.currentUser()), _this$setState));
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      api.postNewadd(this.state.title, this.state.desc, this.state.devicetotest, this.state.budget, this.state.nroftesters, this.state.startdate, this.state.enddate, api.currentUser());
-      this.handleReset(); //unmountComponentAtNode(document.getElementById('root'));
-
+      api.postNewadd(this.state.title, this.state.desc, this.state.devicetotest, this.state.budget, this.state.nroftesters, this.state.startdate, this.state.enddate, this.state.author);
+      this.handleReset();
       event.preventDefault();
     }
   }, {
@@ -33457,7 +33459,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60050" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53371" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
