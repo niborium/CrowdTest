@@ -7,12 +7,10 @@ export class AdForm extends React.Component {
         this.state = {
             title: '',
             desc:'',
-            devicetotest: '',
             budget: '',
             nroftesters: '',
             startdate: '',
-            enddate: '',
-            author: ''
+            enddate: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -20,34 +18,40 @@ export class AdForm extends React.Component {
     }
 
     handleChange(event, field) {
-        this.setState({ [field]: event.target.value, author: api.currentUser() });
+        this.setState({ [field]: event.target.value });
     }
 
     handleSubmit(event) {
+        let selecteddevices = Array.from(document.querySelectorAll('[id=phones]:checked'));
+        let values = selecteddevices.map(el => el.value);
+        let devices = values.join(', ');
+
         api.postNewadd(
             this.state.title, 
             this.state.desc, 
-            this.state.devicetotest, 
+            devices, 
             this.state.budget, 
             this.state.nroftesters, 
             this.state.startdate, 
             this.state.enddate, 
-            this.state.author
+            api.currentUser(),
             );
         this.handleReset();
         event.preventDefault();
     }
     handleReset = () => {
-        document.querySelectorAll('input');
         this.setState({
         title: [''],
         desc: [''],
-        devicetotest: [''],
         budget: [''],
         nroftesters: [''],
         startdate: [''],
         enddate: ['']
         });
+        let inputs = document. querySelectorAll('[id=phones]:checked')
+        inputs.forEach(item => {
+            item.checked = false
+        })
     };
 
     render() {
@@ -74,7 +78,17 @@ export class AdForm extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col">
-                        <input type="text" className="form-control" placeholder="Enhet att testa på" required value={this.state.devicetotest} onChange={(event) => this.handleChange(event, "devicetotest")} /><br></br>
+                        <fieldset />
+                            <legend>Enheter att testa på</legend>
+                            Apple iPhone 13: <input type="checkbox" id="phones" value="Apple iPhone 13" /><br></br>
+                            Apple iPhone 13 Pro	Max: <input type="checkbox" id="phones" value="Apple iPhone 13 Pro Max" /><br></br>
+                            Apple iPhone 13 Pro: <input type="checkbox" id="phones" value="Apple iPhone 13 Pro" /><br></br>
+                            Apple iPhone 12: <input type="checkbox" id="phones" value="Apple iPhone 12" /><br></br>
+                            Apple Samsung Galaxy S21: <input type="checkbox" id="phones" value="Apple Samsung Galaxy S21" /><br></br>
+                            Samsung Galaxy S21 Ultra: <input type="checkbox" id="phones" value="Samsung Galaxy S21 Ultra"  /><br></br>
+                            Google Pixel 5: <input type="checkbox" id="phones" value="Google Pixel 5" /><br></br>
+                            OnePlus 8: <input type="checkbox" id="phones" value="OnePlus 8" /><br></br>
+                        <fieldset />
                     </div>
                 </div>
                 <div className="row">
