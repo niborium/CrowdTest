@@ -32852,6 +32852,8 @@ function Footer() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.currentRole = currentRole;
+exports.currentUser = currentUser;
 exports.getAllpost = getAllpost;
 exports.loginUser = loginUser;
 exports.logoutUser = logoutUser;
@@ -32901,7 +32903,8 @@ function postNewadd(title, desc, devices, budget, nroftesters, startdate, enddat
 function getAllpost() {
   var posts = JSON.parse(localStorage.getItem(lskey) || "[]");
   return posts;
-}
+} //Set user in localstorage
+
 
 function loginUser(setAccount, setRole) {
   var userInfo = {
@@ -32909,10 +32912,25 @@ function loginUser(setAccount, setRole) {
     'role': setRole
   };
   localStorage.setItem(authkey, JSON.stringify(userInfo));
-}
+} //Logout user - removeitem from localstorage
+
 
 function logoutUser() {
   localStorage.removeItem(authkey);
+} //Get current user from localstorage
+
+
+function currentUser() {
+  var getInfo = JSON.parse(localStorage.getItem(authkey) || "[]");
+  var userInfo = Object.values(getInfo);
+  return userInfo[0];
+} //Get current role from localstorage
+
+
+function currentRole() {
+  var getInfo = JSON.parse(localStorage.getItem(authkey) || "[]");
+  var userInfo = Object.values(getInfo);
+  return userInfo[1];
 }
 },{}],"src/app/components/adboard.jsx":[function(require,module,exports) {
 "use strict";
@@ -33087,8 +33105,7 @@ var AdForm = /*#__PURE__*/function (_React$Component) {
       budget: '',
       nroftesters: '',
       startdate: '',
-      enddate: '',
-      author: ''
+      enddate: ''
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -33103,7 +33120,7 @@ var AdForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      api.postNewadd(this.state.title, this.state.desc, this.state.devicetotest, this.state.budget, this.state.nroftesters, this.state.startdate, this.state.enddate, this.state.author);
+      api.postNewadd(this.state.title, this.state.desc, this.state.devicetotest, this.state.budget, this.state.nroftesters, this.state.startdate, this.state.enddate, api.currentUser());
       this.handleReset(); //unmountComponentAtNode(document.getElementById('root'));
 
       event.preventDefault();
@@ -33403,7 +33420,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65223" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52945" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

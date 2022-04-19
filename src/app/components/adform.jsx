@@ -11,8 +11,7 @@ export class AdForm extends React.Component {
             budget: '',
             nroftesters: '',
             startdate: '',
-            enddate: '',
-            author: ''
+            enddate: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -32,7 +31,7 @@ export class AdForm extends React.Component {
             this.state.nroftesters, 
             this.state.startdate, 
             this.state.enddate, 
-            this.state.author
+            api.currentUser()
             );
         this.handleReset();
         //unmountComponentAtNode(document.getElementById('root'));
