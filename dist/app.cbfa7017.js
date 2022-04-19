@@ -33174,10 +33174,11 @@ var AdForm = /*#__PURE__*/function (_React$Component) {
         className: "row"
       }, /*#__PURE__*/_react.default.createElement("div", {
         className: "col"
-      }, /*#__PURE__*/_react.default.createElement("input", {
-        type: "text",
+      }, /*#__PURE__*/_react.default.createElement("textarea", {
         className: "form-control",
         placeholder: "Beskrivning",
+        rows: "4",
+        cols: "50",
         required: true,
         value: this.state.desc,
         onChange: function onChange(event) {
@@ -33459,7 +33460,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53371" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53803" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

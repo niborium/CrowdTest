@@ -68,7 +68,8 @@ export class AdForm extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col">
-                        <input type="text" className="form-control" placeholder="Beskrivning" required value={this.state.desc} onChange={(event) => this.handleChange(event, "desc")} /><br></br>
+                        <textarea className="form-control" placeholder="Beskrivning" rows="4" cols="50" required value={this.state.desc} onChange={(event) => this.handleChange(event, "desc")}>
+                        </textarea><br></br>
                     </div>
                 </div>
                 <div className="row">
