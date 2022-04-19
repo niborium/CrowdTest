@@ -48,7 +48,7 @@ export function getAllpost(){
     var posts = JSON.parse(localStorage.getItem(lskey) || "[]");
     return posts;
 }
-//Set user in localstorage
+//POST  (Set user in localstorage)
 export function loginUser(setAccount, setRole){
     var userInfo = {
     'account': setAccount,    
@@ -56,17 +56,17 @@ export function loginUser(setAccount, setRole){
     }   
     localStorage.setItem(authkey,JSON.stringify(userInfo));
 }
-//Logout user - removeitem from localstorage
+//DELETE (Logout user - removeitem from localstorage)
 export function logoutUser(){
     localStorage.removeItem(authkey);
 }
-//Get current user from localstorage
+//GET (Get current user from localstorage)
 export function currentUser(){
     var getInfo = JSON.parse(localStorage.getItem(authkey) || "[]");
     const userInfo = Object.values(getInfo);
     return userInfo[0];
 }
-//Get current role from localstorage
+//GET (Get current role from localstorage)
 export function currentRole(){
     var getInfo = JSON.parse(localStorage.getItem(authkey) || "[]");
     const userInfo = Object.values(getInfo);
