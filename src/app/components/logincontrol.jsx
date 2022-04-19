@@ -1,5 +1,6 @@
 import React from "react";
 import * as api from "../api/api.js"
+import { AdForm }  from "./adform.jsx"
 
 export class LoginControl extends React.Component {
     constructor(props) {
@@ -22,18 +23,20 @@ export class LoginControl extends React.Component {
 
         if (this.state.isLoggedIn === false) {
             return (
-                <><button id="btnLat" className="btn btn-success" onClick={() => this.handleLoginClick("testkonto-testare",loginasTester)}>Logga in som testare</button>&nbsp;&nbsp;
+                <><button id="btnLat" className="btn btn-success" onClick={() => this.handleLoginClick("testkonto-testare",loginasTester)}>Logga in som testare</button>
                 <button id="btnLac" className="btn btn-success" onClick={() => this.handleLoginClick("testkonto-företag",loginasCompany)}>Logga in som företag</button></>
             );
+            } else if (api.currentRole() === loginasCompany){
+                return(
+                <><button id="btnLo" className="btn btn-danger" onClick={this.handleLogoutClick}>Logga ut som {api.currentUser()}</button>
+                <button id="btnAf" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Lägg till ny annons
+                    </button></>
+                );
             } else {
             return (
-                <button id="btnLo" className="btn btn-danger" onClick={this.handleLogoutClick}>Logga ut</button>
+                <button id="btnLo" className="btn btn-danger" onClick={this.handleLogoutClick}>Logga ut som {api.currentUser()}</button>
             );
         }
     }
 }
-
-/*     ReactDOM.render(
-    <LoginControl />,
-    document.getElementById('root')
-    ); */

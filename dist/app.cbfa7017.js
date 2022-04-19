@@ -32903,7 +32903,7 @@ function postNewadd(title, desc, devices, budget, nroftesters, startdate, enddat
 function getAllpost() {
   var posts = JSON.parse(localStorage.getItem(lskey) || "[]");
   return posts;
-} //Set user in localstorage
+} //POST  (Set user in localstorage)
 
 
 function loginUser(setAccount, setRole) {
@@ -32912,22 +32912,23 @@ function loginUser(setAccount, setRole) {
     'role': setRole
   };
   localStorage.setItem(authkey, JSON.stringify(userInfo));
-} //Logout user - removeitem from localstorage
+} //DELETE (Logout user - removeitem from localstorage)
 
 
 function logoutUser() {
   localStorage.removeItem(authkey);
-} //Get current user from localstorage
+} //GET (Get current user from localstorage)
 
 
 function currentUser() {
   var getInfo = JSON.parse(localStorage.getItem(authkey) || "[]");
   var userInfo = Object.values(getInfo);
   return userInfo[0];
-} //Get current role from localstorage
+} //GET (Get current role from localstorage)
 
 
 function currentRole() {
+  ;
   var getInfo = JSON.parse(localStorage.getItem(authkey) || "[]");
   var userInfo = Object.values(getInfo);
   return userInfo[1];
@@ -33130,7 +33131,29 @@ var AdForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return /*#__PURE__*/_react.default.createElement("form", {
+      return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+        className: "modal fade",
+        id: "exampleModal",
+        tabIndex: "-1",
+        "aria-labelledby": "exampleModalLabel",
+        "aria-hidden": "true"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "modal-dialog"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "modal-content"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "modal-header"
+      }, /*#__PURE__*/_react.default.createElement("h5", {
+        className: "modal-title",
+        id: "exampleModalLabel"
+      }, "L\xE4gg till ny annons"), /*#__PURE__*/_react.default.createElement("button", {
+        type: "button",
+        className: "btn-close",
+        "data-bs-dismiss": "modal",
+        "aria-label": "Close"
+      })), /*#__PURE__*/_react.default.createElement("div", {
+        className: "modal-body"
+      }, /*#__PURE__*/_react.default.createElement("form", {
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/_react.default.createElement("div", {
         className: "row"
@@ -33227,7 +33250,13 @@ var AdForm = /*#__PURE__*/function (_React$Component) {
         type: "submit",
         className: "btn btn-primary mb-3",
         value: "L\xE4gg till ny annons"
-      }));
+      }))), /*#__PURE__*/_react.default.createElement("div", {
+        className: "modal-footer"
+      }, /*#__PURE__*/_react.default.createElement("button", {
+        type: "button",
+        className: "btn btn-secondary",
+        "data-bs-dismiss": "modal"
+      }, "Close"))))));
     }
   }]);
 
@@ -33247,6 +33276,8 @@ exports.LoginControl = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 var api = _interopRequireWildcard(require("../api/api.js"));
+
+var _adform = require("./adform.jsx");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -33326,33 +33357,39 @@ var LoginControl = /*#__PURE__*/function (_React$Component) {
           onClick: function onClick() {
             return _this2.handleLoginClick("testkonto-testare", loginasTester);
           }
-        }, "Logga in som testare"), "\xA0\xA0", /*#__PURE__*/_react.default.createElement("button", {
+        }, "Logga in som testare"), /*#__PURE__*/_react.default.createElement("button", {
           id: "btnLac",
           className: "btn btn-success",
           onClick: function onClick() {
             return _this2.handleLoginClick("testkonto-företag", loginasCompany);
           }
         }, "Logga in som f\xF6retag"));
+      } else if (api.currentRole() === loginasCompany) {
+        return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
+          id: "btnLo",
+          className: "btn btn-danger",
+          onClick: this.handleLogoutClick
+        }, "Logga ut som ", api.currentUser()), /*#__PURE__*/_react.default.createElement("button", {
+          id: "btnAf",
+          className: "btn btn-primary",
+          "data-bs-toggle": "modal",
+          "data-bs-target": "#exampleModal"
+        }, "L\xE4gg till ny annons"));
       } else {
         return /*#__PURE__*/_react.default.createElement("button", {
           id: "btnLo",
           className: "btn btn-danger",
           onClick: this.handleLogoutClick
-        }, "Logga ut");
+        }, "Logga ut som ", api.currentUser());
       }
     }
   }]);
 
   return LoginControl;
 }(_react.default.Component);
-/*     ReactDOM.render(
-    <LoginControl />,
-    document.getElementById('root')
-    ); */
-
 
 exports.LoginControl = LoginControl;
-},{"react":"node_modules/react/index.js","../api/api.js":"src/app/api/api.js"}],"src/app/components/menu.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../api/api.js":"src/app/api/api.js","./adform.jsx":"src/app/components/adform.jsx"}],"src/app/components/menu.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33420,7 +33457,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52945" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59597" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

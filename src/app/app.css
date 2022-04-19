@@ -16,6 +16,6 @@ form {
 #menu{
     height: 100px;
 }
-#btnLat, #btnLac, #btnLo {
+#btnLat, #btnLac, #btnLo, #btnAf {
     float: right;
 }

@@ -67,7 +67,7 @@ export function currentUser(){
     return userInfo[0];
 }
 //GET (Get current role from localstorage)
-export function currentRole(){
+export function currentRole(){;
     var getInfo = JSON.parse(localStorage.getItem(authkey) || "[]");
     const userInfo = Object.values(getInfo);
     return userInfo[1];
