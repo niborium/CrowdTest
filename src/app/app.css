@@ -13,10 +13,10 @@ body {
 form {
     display: inline-block;
 }
-#menu{
+#header{
     height: 130px;
 }
-#menu > h1 {
+#header > h1 {
     font-size: 20px;
     float: left;
 }
