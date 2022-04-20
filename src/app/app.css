@@ -14,7 +14,11 @@ form {
     display: inline-block;
 }
 #menu{
-    height: 100px;
+    height: 130px;
+}
+#menu > h1 {
+    font-size: 20px;
+    float: left;
 }
 #btnLat, #btnLac, #btnLo, #btnAf {
     float: right;
