@@ -7,6 +7,9 @@ footer {
     color: white;
     text-align: center;
 }
+button:hover { 
+    -webkit-transform: scale(1.1);
+}
 body {
     text-align: center;
 }

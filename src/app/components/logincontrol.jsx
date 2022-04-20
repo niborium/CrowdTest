@@ -22,12 +22,12 @@ export class LoginControl extends React.Component {
 
         if (this.state.isLoggedIn === false) {
             return (
-                <><button id="btnLat" className="btn btn-success" onClick={() => this.handleLoginClick("testkonto-testare",loginasTester)}>Logga in som testare</button>
+                <><button id="btnLat" className="btn btn-success" onClick={() => this.handleLoginClick("testkonto-testare",loginasTester)}>Logga in som testare</button><br></br><br></br>
                 <button id="btnLac" className="btn btn-success" onClick={() => this.handleLoginClick("testkonto-företag",loginasCompany)}>Logga in som företag</button></>
             );
             } else if (api.currentRole() === loginasCompany){
                 return(
-                <><button id="btnLo" className="btn btn-danger" onClick={this.handleLogoutClick}>Logga ut som {api.currentUser()}</button>
+                <><button id="btnLo" className="btn btn-danger" onClick={this.handleLogoutClick}>Logga ut som {api.currentUser()}</button><br></br><br></br>
                 <button id="btnAf" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adformModal">
                         Lägg till ny annons
                     </button></>
