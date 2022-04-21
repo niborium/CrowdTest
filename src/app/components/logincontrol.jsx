@@ -13,7 +13,7 @@ export class LoginControl extends React.Component {
         api.loginUser(setAccount, setRole);
     }
     handleLogoutClick() {
-        this.setState({isLoggedIn: false});
+        this.setState({isLoggedIn: false, userRole:'', currentUser:''});
         api.logoutUser();
     }
     render() {
