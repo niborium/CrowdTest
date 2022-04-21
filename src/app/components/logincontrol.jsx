@@ -30,7 +30,7 @@ export class LoginControl extends React.Component {
                 <><button id="btnLo" className="btn btn-danger" onClick={this.handleLogoutClick}>Logga ut som {api.currentUser()}</button><br></br><br></br>
                 <button id="btnAf" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adformModal">
                         Lägg till ny annons
-                    </button></>
+                </button></>
                 );
             } else {
             return (

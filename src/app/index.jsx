@@ -8,11 +8,13 @@ import { Header } from "./components/header.jsx";
 const container = document.getElementById('root');
 const root = createRoot(container);
 
+const companyName = "CrowdTest"
+
 root.render(
 <div>
-    <Header />
+    <Header title={companyName}/>
     <AdBoard />
     <AdForm />
-    <Footer />
+    <Footer company={companyName} author={"Robin Karlsson (WU21)"} />
 </div>
 );

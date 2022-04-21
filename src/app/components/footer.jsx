@@ -1,9 +1,9 @@
 import React from "react";
 
-export function Footer() {
+export function Footer(props) {
     return (
         <footer>
-            <p>CrowdTest &copy; Robin Karlsson (WU21)</p>
+            <p>{props.company} &copy; {props.author}</p>
         </footer>
     );
 }
