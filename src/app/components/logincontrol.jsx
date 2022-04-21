@@ -1,5 +1,4 @@
 import React from 'react';
-import * as api from '../api/api.js';
 
 const LoginControl = ({ data }) => {
   const {
