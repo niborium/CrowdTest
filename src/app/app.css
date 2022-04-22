@@ -1,0 +1,28 @@
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+button:hover { 
+    -webkit-transform: scale(1.1);
+}
+body {
+    text-align: center;
+}
+form {
+    display: inline-block;
+}
+#header{
+    height: 130px;
+}
+#header > h1 {
+    font-size: 20px;
+    float: left;
+}
+#btnLat, #btnLac, #btnLo, #btnAf {
+    float: right;
+}
