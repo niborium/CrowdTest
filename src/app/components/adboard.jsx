@@ -46,7 +46,7 @@ const AdBoard = ({ data }) => {
                   {userRole === 'tester' ? (
                     <td>
                       <button
-                        id='btnAf'
+                        id='btnBf'
                         className='btn btn-primary'
                         data-bs-toggle='modal'
                         data-bs-target='#bidformModal'
