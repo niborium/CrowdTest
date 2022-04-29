@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AdBoard from './adboard.jsx';
 import { AdForm } from './adform.jsx';
 import { Header } from './header.jsx';
 import { Footer } from './footer.jsx';
-
+import ProposalForm from './proposalform.jsx';
+import ProposalBoard from './proposalboard.jsx';
+import * as api from '../api/api';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -11,8 +13,18 @@ const App = () => {
   const [userRole, setUserRole] = useState('');
   const [update, setUpdate] = useState(false);
   const [list, setList] = useState([]);
-  
-  const companyName = 'CrowdTest';
+
+  //* proposal list
+  const [proposalList, setProposalList] = useState([]);
+
+  const companyName = 'App';
+
+  useEffect(() => {
+    api
+      .getAllProposal()
+      .then((res) => setProposalList(res))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <>
@@ -42,7 +54,30 @@ const App = () => {
         setUpdate={update}
         setList={setList}
       />
-      <Footer company={companyName} author={'Robin Karlsson (WU21)'} />
+      <ProposalForm
+        setProposalList={setProposalList}
+        proposalList={proposalList}
+        update={update}
+        setUpdate={setUpdate}
+      />
+      <ProposalBoard
+        setProposalList={setProposalList}
+        proposalList={proposalList}
+        update={update}
+        setUpdate={update}
+      />
+      <Footer
+        company={companyName}
+        data={{
+          isLoggedIn,
+          setIsLoggedIn,
+          currentUser,
+          setCurrentUser,
+          userRole,
+          setUserRole,
+        }}
+        author={'Author'}
+      />
     </>
   );
 };
