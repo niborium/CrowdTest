@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import * as api from '../api/api.js';
 
 const ProposalBoard = ({ proposalList, setProposalList, update }) => {
-  // const [proposalList, setProposalList] = useState([]);
 
   useEffect(() => {
     api

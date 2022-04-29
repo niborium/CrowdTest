@@ -12,18 +12,12 @@ const ProposalForm = ({ setProposalList, update, setUpdate }) => {
       api.postProposal(description).then(() => {
         setSubmitting(false);
         setUpdate(!update);
-        // setProposalList(api.getAllProposal());
         setDescription('');
       });
-      // await setProposalList(api.getAllProposal());
     } catch (error) {
       console.error(error);
     }
   };
-
-  // useEffect(() => {
-  //   setProposalList(api.getAllProposal());
-  // }, [update]);
 
   return (
     <>
