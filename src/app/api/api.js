@@ -1,6 +1,7 @@
 import 'regenerator-runtime/runtime';
 import axios from 'axios';
 const lskey = 'ct-list';
+const bidkey = 'bid-data';
 
 //POST (Sends new post for adboard)
 export function postNewadd(
@@ -71,3 +72,15 @@ export const getAllProposal = async () => {
     .then((res) => res.data)
     .catch((err) => console.log(err));
 };
+
+export function postBid(id, author, totalAmount) {
+  var existingBids = JSON.parse(localStorage.getItem(bidkey) || '[]');
+  var newBid = { id: id, author: author, totalAmount: totalAmount.toString() };
+  existingBids.push(newBid);
+  localStorage.setItem(bidkey, JSON.stringify(existingBids));
+}
+
+export function getBids(id) {
+  var bids = JSON.parse(localStorage.getItem(bidkey) || '[]');
+  return bids.filter((bid) => bid.id === id);
+}

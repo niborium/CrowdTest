@@ -6,6 +6,8 @@ import { Footer } from './footer.jsx';
 import ProposalForm from './proposalform.jsx';
 import ProposalBoard from './proposalboard.jsx';
 import * as api from '../api/api';
+import BidForm from './bidform.jsx';
+import BidList from './viewbids.jsx';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,7 +19,15 @@ const App = () => {
   //* proposal list
   const [proposalList, setProposalList] = useState([]);
 
-  const companyName = 'App';
+  //* bid form
+  const [currentUserData, setCurrentUserData] = useState({
+    id: '',
+    author: '',
+  });
+  const [bidList, setBidList] = useState([]);
+
+  const companyName = 'CrowdTest';
+  console.log(currentUserData, setCurrentUserData);
 
   useEffect(() => {
     api
@@ -46,6 +56,7 @@ const App = () => {
           update,
           list,
           setList,
+          setCurrentUserData,
         }}
       />
       <AdForm
@@ -76,7 +87,18 @@ const App = () => {
           userRole,
           setUserRole,
         }}
-        author={'Author'}
+        author={'Robin Karlsson (WU21)'}
+      />
+      <BidForm
+        currentUserData={currentUserData}
+        setCurrentUserData={setCurrentUserData}
+        bidList={bidList}
+        setBidList={setBidList}
+      />
+      <BidList
+        bidList={bidList}
+        setBidList={setBidList}
+        currentUserData={currentUserData}
       />
     </>
   );
