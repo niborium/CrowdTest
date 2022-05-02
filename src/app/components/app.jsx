@@ -27,7 +27,6 @@ const App = () => {
   const [bidList, setBidList] = useState([]);
 
   const companyName = 'CrowdTest';
-  console.log(currentUserData, setCurrentUserData);
 
   useEffect(() => {
     api
