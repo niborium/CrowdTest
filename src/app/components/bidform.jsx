@@ -33,7 +33,7 @@ const BidForm = ({ currentUserData, setBidList }) => {
           <div className='modal-content'>
             <div className='modal-header'>
               <h5 className='modal-title' id='bidformModal'>
-                Ange bud för: {currentUserData?.author}
+                Bud från användare: {currentUserData?.author}
               </h5>
               <button
                 type='button'
@@ -46,10 +46,12 @@ const BidForm = ({ currentUserData, setBidList }) => {
               <form onSubmit={handleSubmit}>
                 <div className='row'>
                   <div className='col'>
-                    <p>Antal timmar:</p>
+                    <label htmlFor='hours'>Antal timmar</label>
                     <input
+                      name='hours'
+                      id='hours'
                       className='form-control'
-                      placeholder='Antal timmar'
+                      placeholder='Description'
                       type='number'
                       rows='10'
                       cols='80'
@@ -62,10 +64,12 @@ const BidForm = ({ currentUserData, setBidList }) => {
                 </div>
                 <div className='row'>
                   <div className='col'>
-                    <p>Timpris:</p>
+                    <label htmlFor='hourlyRate'>Ange timpris</label>
                     <input
+                      id='hourlyRate'
+                      name='hourlyRate'
                       className='form-control'
-                      placeholder='Timpris'
+                      placeholder='Description'
                       rows='10'
                       cols='80'
                       type={'number'}
@@ -79,19 +83,9 @@ const BidForm = ({ currentUserData, setBidList }) => {
                 <div className='row'>
                   <div className='col'>
                     <input
-                      className='form-control'
-                      placeholder={
-                        hours > 0 && hourlyRate > 0
-                          ? hours * hourlyRate
-                          : '{Belopp}'
-                      }
+                      placeholder={`totalt :  ${hours * hourlyRate}`}
                       rows='10'
                       cols='80'
-                      value={
-                        hours > 0 && hourlyRate > 0
-                          ? hours * hourlyRate
-                          : '{Belopp}'
-                      }
                     ></input>
                     <br />
                     <br />
@@ -101,7 +95,7 @@ const BidForm = ({ currentUserData, setBidList }) => {
                 <input
                   type='submit'
                   className='btn btn-primary mb-3'
-                  value={'Skicka'}
+                  value={'Ange bud'}
                 />
               </form>
             </div>

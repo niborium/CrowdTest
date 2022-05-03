@@ -84,3 +84,10 @@ export function getBids(id) {
   var bids = JSON.parse(localStorage.getItem(bidkey) || '[]');
   return bids.filter((bid) => bid.id === id);
 }
+
+export function deleteAd(id) {
+  const bids = JSON.parse(localStorage.getItem(lskey) || '[]');
+  const newAds = bids.filter((bid) => bid.id !== id);
+
+  localStorage.setItem(lskey, JSON.stringify(newAds));
+}

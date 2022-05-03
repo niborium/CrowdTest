@@ -8,6 +8,9 @@ import ProposalBoard from './proposalboard.jsx';
 import * as api from '../api/api';
 import BidForm from './bidform.jsx';
 import BidList from './viewbids.jsx';
+import Profile from './profile.jsx';
+import Faq from './faq.jsx';
+import AdDelConfirm from './addelconfirm.jsx';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -99,6 +102,9 @@ const App = () => {
         setBidList={setBidList}
         currentUserData={currentUserData}
       />
+      <Profile currentUser={currentUser} userRole={userRole} />
+      <Faq userRole={userRole} />
+      <AdDelConfirm currentUserData={currentUserData} setList={setList} />
     </>
   );
 };

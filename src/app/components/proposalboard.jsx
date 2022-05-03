@@ -22,7 +22,7 @@ const ProposalBoard = ({ proposalList, setProposalList, update }) => {
           <div className='modal-content'>
             <div className='modal-header'>
               <h5 className='modal-title' id='proposalFormModal'>
-                Proposal Board
+                Förbättringsförslag
               </h5>
               <button
                 type='button'
@@ -37,7 +37,7 @@ const ProposalBoard = ({ proposalList, setProposalList, update }) => {
                   <thead>
                     <tr>
                       <th>#id</th>
-                      <th>Description</th>
+                      <th>Beskrivning</th>
                     </tr>
                   </thead>
                   <tbody>

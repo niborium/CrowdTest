@@ -32,7 +32,7 @@ const ProposalForm = ({ setProposalList, update, setUpdate }) => {
           <div className='modal-content'>
             <div className='modal-header'>
               <h5 className='modal-title' id='proposalFormModal'>
-                Proposal form
+                Lämna förbättringsförslag
               </h5>
               <button
                 type='button'
@@ -47,7 +47,7 @@ const ProposalForm = ({ setProposalList, update, setUpdate }) => {
                   <div className='col'>
                     <textarea
                       className='form-control'
-                      placeholder='Description'
+                      placeholder='Beskrivning'
                       rows='10'
                       cols='80'
                       required
@@ -60,7 +60,7 @@ const ProposalForm = ({ setProposalList, update, setUpdate }) => {
                 <input
                   type='submit'
                   className='btn btn-primary mb-3'
-                  value={submitting ? 'Submitting...' : 'Submit'}
+                  value={submitting ? 'Skickar...' : 'Skicka'}
                 />
               </form>
             </div>
@@ -70,7 +70,7 @@ const ProposalForm = ({ setProposalList, update, setUpdate }) => {
                 className='btn btn-secondary'
                 data-bs-dismiss='modal'
               >
-                Exit
+                Stäng
               </button>
             </div>
           </div>

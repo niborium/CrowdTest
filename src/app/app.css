@@ -1,28 +1,39 @@
 footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: black;
-    color: white;
-    text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
 }
-button:hover { 
-    -webkit-transform: scale(1.1);
+button:hover {
+  -webkit-transform: scale(1.1);
 }
 body {
-    text-align: center;
+  text-align: center;
 }
 form {
-    display: inline-block;
+  display: inline-block;
 }
-#header{
-    height: 130px;
+#header {
+  height: 130px;
 }
 #header > h1 {
-    font-size: 20px;
-    float: left;
+  font-size: 20px;
+  float: left;
 }
-#btnLat, #btnLac, #btnLo, #btnAf {
-    float: right;
+#btnLat,
+#btnLac,
+#btnLo,
+#btnAf {
+  float: right;
+}
+#btnProposal1,
+#btnProposal2 {
+  float: right;
+}
+#btnProfile {
+  float: right;
+  margin-left: 1rem;
 }

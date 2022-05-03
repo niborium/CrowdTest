@@ -31,6 +31,7 @@ const AdBoard = ({ data }) => {
                 <th>Publicerad av:</th>
                 {userRole === 'tester' ? <th>Lämna bud</th> : null}
                 {userRole === 'tester' ? <th>Visa bud bud</th> : null}
+                {userRole === 'company' ? <th>Tools</th> : null}
               </tr>
             </thead>
             <tbody>
@@ -81,6 +82,24 @@ const AdBoard = ({ data }) => {
                       </button>
                     </td>
                   ) : null}
+                  {userRole === 'company' && (
+                    <td>
+                      <button
+                        id='btnDelete'
+                        className='btn btn-danger'
+                        data-bs-toggle='modal'
+                        data-bs-target='#deleteModal'
+                        onClick={() =>
+                          setCurrentUserData({
+                            id: data.id,
+                            author: data.author,
+                          })
+                        }
+                      >
+                        Radera
+                      </button>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
