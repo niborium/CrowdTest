@@ -4,7 +4,6 @@ import * as api from '../api/api';
 const AdDelConfirm = ({ currentUserData, setList }) => {
   const handleDelete = (id) => {
     api.deleteAd(id);
-    console.log('delterd');
     setList(api.getAllpost());
   };
   return (
