@@ -30,7 +30,7 @@ const AdBoard = ({ data }) => {
                 <th>Slutdatum:</th>
                 <th>Publicerad av:</th>
                 {userRole === 'tester' ? <th>Lämna bud</th> : null}
-                {userRole === 'tester' ? <th>Visa bud bud</th> : null}
+                {userRole === 'tester' || userRole === 'company' ? <th>Visa bud</th> : null}
                 {userRole === 'company' ? <th>Tools</th> : null}
               </tr>
             </thead>
@@ -46,7 +46,7 @@ const AdBoard = ({ data }) => {
                   <td>{data.startdate}</td>
                   <td>{data.enddate}</td>
                   <td>{data.author}</td>
-                  {userRole === 'tester' ? (
+                  {userRole === 'tester'? (
                     <td>
                       <button
                         id='btnBf'
@@ -64,7 +64,7 @@ const AdBoard = ({ data }) => {
                       </button>
                     </td>
                   ) : null}
-                  {userRole === 'tester' ? (
+                  {userRole === 'tester' || userRole === 'company' ? (
                     <td>
                       <button
                         id='btnBf'
