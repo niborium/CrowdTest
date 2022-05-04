@@ -55,7 +55,7 @@ const BidList = ({ bidList, setBidList, currentUserData }) => {
                 className='btn btn-secondary'
                 data-bs-dismiss='modal'
               >
-                Exit
+                Stäng
               </button>
             </div>
           </div>
