@@ -24,8 +24,12 @@ const Profile = ({ currentUser, userRole }) => {
               ></button>
             </div>
             <div className='m-4 modal-body'>
-              <h3>Användare : {currentUser}</h3>
-              <h4>Roll : {userRole}</h4>
+              <p>Användare : {currentUser}</p>
+              <p>Roll : {userRole}</p>
+              {userRole === 'company' && (
+                <><h3>Verktyg för företag</h3><br></br><p>Inga verktyg tillgängliga ännu.</p></>
+              )}{' '}
+              {userRole === 'tester' && <><h3>Verktyg för testare</h3><br></br><p>Inga verktyg tillgängliga ännu.</p></>}
             </div>
             <div className='modal-footer'>
               <button
