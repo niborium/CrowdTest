@@ -74,14 +74,14 @@ export const getAllProposal = async () => {
 };
 
 export function postBid(id, author, totalAmount) {
-  var existingBids = JSON.parse(localStorage.getItem(bidkey) || '[]');
+  var existingBids = JSON.parse(sessionStorage.getItem(bidkey) || '[]');
   var newBid = { id: id, author: author, totalAmount: totalAmount.toString() };
   existingBids.push(newBid);
-  localStorage.setItem(bidkey, JSON.stringify(existingBids));
+  sessionStorage.setItem(bidkey, JSON.stringify(existingBids));
 }
 
 export function getBids(id) {
-  var bids = JSON.parse(localStorage.getItem(bidkey) || '[]');
+  var bids = JSON.parse(sessionStorage.getItem(bidkey) || '[]');
   return bids.filter((bid) => bid.id === id);
 }
 
