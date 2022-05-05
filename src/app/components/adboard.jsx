@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import * as api from '../api/api.js';
 
 const AdBoard = ({ data }) => {
-  const { currentUser, userRole, update, list, setList } = data;
+  const { currentUser, userRole, update, list, setList, setCurrentUserData } =
+    data;
 
   const tick = () => {
     setList(api.getAllpost());
@@ -29,6 +30,8 @@ const AdBoard = ({ data }) => {
                 <th>Slutdatum:</th>
                 <th>Publicerad av:</th>
                 {userRole === 'tester' ? <th>Lämna bud</th> : null}
+                {userRole === 'tester' || userRole === 'company' ? <th>Visa bud</th> : null}
+                {userRole === 'company' ? <th>Tools</th> : null}
               </tr>
             </thead>
             <tbody>
@@ -43,18 +46,60 @@ const AdBoard = ({ data }) => {
                   <td>{data.startdate}</td>
                   <td>{data.enddate}</td>
                   <td>{data.author}</td>
-                  {userRole === 'tester' ? (
+                  {userRole === 'tester'? (
                     <td>
                       <button
                         id='btnBf'
                         className='btn btn-primary'
                         data-bs-toggle='modal'
                         data-bs-target='#bidformModal'
+                        onClick={() =>
+                          setCurrentUserData({
+                            id: data.id,
+                            author: data.author,
+                          })
+                        }
                       >
-                        Bud ej tillgängligt ännu
+                        Lämna bud
                       </button>
                     </td>
                   ) : null}
+                  {userRole === 'tester' || userRole === 'company' ? (
+                    <td>
+                      <button
+                        id='btnBf'
+                        className='btn btn-primary'
+                        data-bs-toggle='modal'
+                        data-bs-target='#viewbidsModal'
+                        onClick={() =>
+                          setCurrentUserData({
+                            id: data.id,
+                            author: data.author,
+                          })
+                        }
+                      >
+                        Visa bud
+                      </button>
+                    </td>
+                  ) : null}
+                  {userRole === 'company' && (
+                    <td>
+                      <button
+                        id='btnDelete'
+                        className='btn btn-danger'
+                        data-bs-toggle='modal'
+                        data-bs-target='#deleteModal'
+                        onClick={() =>
+                          setCurrentUserData({
+                            id: data.id,
+                            author: data.author,
+                          })
+                        }
+                      >
+                        Radera
+                      </button>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
