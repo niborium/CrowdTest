@@ -28,7 +28,7 @@ Använder Bootstrap för styling (knappar, tables och responsivitet m.m.)
 
 Importerad i app.html (script src)
 
-### [Parcel](https://www.npmjs.com/package/parcel-bundler
+### [Parcel](https://www.npmjs.com/package/parcel-bundler)
 
 Parcel är en webbapplikationspaketerare (bundler), som särskiljs av sin utvecklarupplevelse. Den erbjuder blixtsnabb prestanda med flerkärnig bearbetning och kräver noll konfiguration. Lätt att använda, enkelt att utöka och kraftfullt byggsystem.
 
