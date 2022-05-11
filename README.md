@@ -22,11 +22,15 @@ Axios är en promise-baserad HTTP-klient för webbläsaren och Node.js. Axios g�
 
 installerad som paket (npm)
 
-### [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+### [Bootstrap](https://parceljs.org/)
 
-Använder Bootstrap för styling (knappar, tables och responsivitet m.m.)
+Parcel är en webbapplikationspaketerare (bundler), som särskiljs av sin utvecklarupplevelse. Den erbjuder blixtsnabb prestanda med flerkärnig bearbetning och kräver noll konfiguration. Lätt att använda, enkelt att utöka och kraftfullt byggsystem.
 
 Importerad i app.html (script src)
+
+### [Parcel](https://www.npmjs.com/package/parcel-bundler
+
+Installerad som paket (npm)
 
 ## Tjänster
 
