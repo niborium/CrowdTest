@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import * as api from '../api/api.js';
+import propTypes from 'prop-types';
 import 'regenerator-runtime/runtime';
+import Button from '../reusable-components/button.jsx';
 const ProposalForm = ({ setProposalList, update, setUpdate }) => {
   const [description, setDescription] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -34,12 +36,12 @@ const ProposalForm = ({ setProposalList, update, setUpdate }) => {
               <h5 className='modal-title' id='proposalFormModal'>
                 Lämna förbättringsförslag
               </h5>
-              <button
+              <Button
                 type='button'
                 className='btn-close'
                 data-bs-dismiss='modal'
                 aria-label='Close'
-              ></button>
+              ></Button>
             </div>
             <div className='modal-body'>
               <form onSubmit={handleSubmit}>
@@ -65,19 +67,24 @@ const ProposalForm = ({ setProposalList, update, setUpdate }) => {
               </form>
             </div>
             <div className='modal-footer'>
-              <button
+              <Button
                 type='button'
                 className='btn btn-secondary'
                 data-bs-dismiss='modal'
-              >
-                Stäng
-              </button>
+                text='Stäng'
+              />
             </div>
           </div>
         </div>
       </div>
     </>
   );
+};
+
+ProposalForm.propTypes = {
+  setProposalList: propTypes.func,
+  update: propTypes.bool,
+  setUpdate: propTypes.func,
 };
 
 export default ProposalForm;

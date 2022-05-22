@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import * as api from '../api/api.js';
-
-const AdBoard = ({ data }) => {
+import propTypes from 'prop-types';
+import Button from '../reusable-components/button.jsx';
+function AdBoard({ data }) {
   const { currentUser, userRole, update, list, setList, setCurrentUserData } =
     data;
 
@@ -30,8 +31,11 @@ const AdBoard = ({ data }) => {
                 <th>Slutdatum:</th>
                 <th>Publicerad av:</th>
                 {userRole === 'tester' ? <th>Lämna bud</th> : null}
-                {userRole === 'tester' || userRole === 'company' ? <th>Visa bud</th> : null}
+                {userRole === 'tester' || userRole === 'company' ? (
+                  <th>Visa bud</th>
+                ) : null}
                 {userRole === 'company' ? <th>Tools</th> : null}
+                {userRole === 'company' ? <th>Edit</th> : null}
               </tr>
             </thead>
             <tbody>
@@ -46,9 +50,9 @@ const AdBoard = ({ data }) => {
                   <td>{data.startdate}</td>
                   <td>{data.enddate}</td>
                   <td>{data.author}</td>
-                  {userRole === 'tester'? (
+                  {userRole === 'tester' ? (
                     <td>
-                      <button
+                      <Button
                         id='btnBf'
                         className='btn btn-primary'
                         data-bs-toggle='modal'
@@ -59,14 +63,13 @@ const AdBoard = ({ data }) => {
                             author: data.author,
                           })
                         }
-                      >
-                        Lämna bud
-                      </button>
+                        text='Lämna bud'
+                      />
                     </td>
                   ) : null}
                   {userRole === 'tester' || userRole === 'company' ? (
                     <td>
-                      <button
+                      <Button
                         id='btnBf'
                         className='btn btn-primary'
                         data-bs-toggle='modal'
@@ -77,28 +80,42 @@ const AdBoard = ({ data }) => {
                             author: data.author,
                           })
                         }
-                      >
-                        Visa bud
-                      </button>
+                        text='Visa bud'
+                      />
                     </td>
                   ) : null}
                   {userRole === 'company' && (
-                    <td>
-                      <button
-                        id='btnDelete'
-                        className='btn btn-danger'
-                        data-bs-toggle='modal'
-                        data-bs-target='#deleteModal'
-                        onClick={() =>
-                          setCurrentUserData({
-                            id: data.id,
-                            author: data.author,
-                          })
-                        }
-                      >
-                        Radera
-                      </button>
-                    </td>
+                    <>
+                      <td>
+                        <Button
+                          id='btnDelete'
+                          className='btn btn-danger'
+                          data-bs-toggle='modal'
+                          data-bs-target='#deleteModal'
+                          onClick={() =>
+                            setCurrentUserData({
+                              id: data.id,
+                              author: data.author,
+                            })
+                          }
+                          text={'radera'}
+                        />
+                      </td>
+                      <td>
+                        <Button
+                          className='btn btn-primary'
+                          data-bs-toggle='modal'
+                          data-bs-target='#adEditForm'
+                          onClick={() =>
+                            setCurrentUserData({
+                              id: data.id,
+                              author: data.author,
+                            })
+                          }
+                          text='edit'
+                        />
+                      </td>
+                    </>
                   )}
                 </tr>
               ))}
@@ -108,6 +125,17 @@ const AdBoard = ({ data }) => {
       </div>
     </>
   );
+}
+
+AdBoard.propTypes = {
+  data: propTypes.shape({
+    currentUser: propTypes.string,
+    userRole: propTypes.string,
+    update: propTypes.bool,
+    list: propTypes.array,
+    setList: propTypes.func,
+    setCurrentUserData: propTypes.func,
+  }),
 };
 
 export default AdBoard;

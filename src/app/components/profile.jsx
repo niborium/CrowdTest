@@ -1,4 +1,6 @@
 import React from 'react';
+import propTypes from 'prop-types';
+import Button from '../reusable-components/button';
 
 const Profile = ({ currentUser, userRole }) => {
   return (
@@ -16,35 +18,49 @@ const Profile = ({ currentUser, userRole }) => {
               <h5 className='modal-title' id='profileModal'>
                 Profil
               </h5>
-              <button
+              <Button
                 type='button'
                 className='btn-close'
                 data-bs-dismiss='modal'
                 aria-label='Close'
-              ></button>
+              />
             </div>
             <div className='m-4 modal-body'>
               <p>Användare : {currentUser}</p>
               <p>Roll : {userRole}</p>
               {userRole === 'company' && (
-                <><h3>Verktyg för företag</h3><br></br><p>Inga verktyg tillgängliga ännu.</p></>
+                <>
+                  <h3>Verktyg för företag</h3>
+                  <br></br>
+                  <p>Inga verktyg tillgängliga ännu.</p>
+                </>
               )}{' '}
-              {userRole === 'tester' && <><h3>Verktyg för testare</h3><br></br><p>Inga verktyg tillgängliga ännu.</p></>}
+              {userRole === 'tester' && (
+                <>
+                  <h3>Verktyg för testare</h3>
+                  <br></br>
+                  <p>Inga verktyg tillgängliga ännu.</p>
+                </>
+              )}
             </div>
             <div className='modal-footer'>
-              <button
+              <Button
                 type='button'
                 className='btn btn-secondary'
                 data-bs-dismiss='modal'
-              >
-                Stäng
-              </button>
+                text='Stäng'
+              />
             </div>
           </div>
         </div>
       </div>
     </>
   );
+};
+
+Profile.propTypes = {
+  currentUser: propTypes.string.isRequired,
+  userRole: propTypes.string.isRequired,
 };
 
 export default Profile;

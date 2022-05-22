@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import * as api from '../api/api';
+import propTypes from 'prop-types';
+import Button from '../reusable-components/button';
 const BidList = ({ bidList, setBidList, currentUserData }) => {
-  useEffect(() => {
-    setBidList(api.getBids(currentUserData.id));
-  }, [currentUserData.id]);
+  bidListFiltered = bidList?.filter((bid) => bid.user === currentUserData.id);
 
   return (
     <>
@@ -20,12 +20,12 @@ const BidList = ({ bidList, setBidList, currentUserData }) => {
               <h5 className='modal-title' id='viewbidsModal'>
                 Bud för: {currentUserData?.author}
               </h5>
-              <button
+              <Button
                 type='button'
                 className='btn-close'
                 data-bs-dismiss='modal'
                 aria-label='Close'
-              ></button>
+              ></Button>
             </div>
             <div className='m-4 modal-body'>
               <div className='table-responsive'>
@@ -38,11 +38,11 @@ const BidList = ({ bidList, setBidList, currentUserData }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {bidList?.map((data) => (
-                      <tr key={data.id}>
-                        <td>{data.id}</td>
-                        <td>{data.author}</td>
-                        <td>{data.totalAmount} kr</td>
+                    {bidListFiltered?.map((data) => (
+                      <tr key={data?.id}>
+                        <td>{data?.id}</td>
+                        <td>{data?.author}</td>
+                        <td>{data?.totalAmount} kr</td>
                       </tr>
                     ))}
                   </tbody>
@@ -50,13 +50,12 @@ const BidList = ({ bidList, setBidList, currentUserData }) => {
               </div>
             </div>
             <div className='modal-footer'>
-              <button
+              <Button
                 type='button'
                 className='btn btn-secondary'
                 data-bs-dismiss='modal'
-              >
-                Stäng
-              </button>
+                text='Stäng'
+              />
             </div>
           </div>
         </div>
@@ -65,4 +64,9 @@ const BidList = ({ bidList, setBidList, currentUserData }) => {
   );
 };
 
+BidList.propTypes = {
+  bidList: propTypes.array,
+  setBidList: propTypes.func,
+  currentUserData: propTypes.object,
+};
 export default BidList;

@@ -61,33 +61,47 @@ export function getAllpost() {
 }
 export const postProposal = async (description) => {
   await axios
-    .post('ImprovementProposals', { Description: description })
+    .post('https://6268f190f2c0cdabac06d6a5.mockapi.io/ImprovementProposals', {
+      Description: description,
+    })
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
 
 export const getAllProposal = async () => {
   return await axios
-    .get('ImprovementProposals')
+    .get('https://6268f190f2c0cdabac06d6a5.mockapi.io/ImprovementProposals')
     .then((res) => res.data)
     .catch((err) => console.log(err));
 };
 
-export function postBid(id, author, totalAmount) {
-  var existingBids = JSON.parse(sessionStorage.getItem(bidkey) || '[]');
-  var newBid = { id: id, author: author, totalAmount: totalAmount.toString() };
-  existingBids.push(newBid);
-  sessionStorage.setItem(bidkey, JSON.stringify(existingBids));
-}
+export const postBid = async (id, author, totalAmount) => {
+  await axios
+    .post('https://628a11e15da6ddfd5d5f66fa.mockapi.io/bids', {
+      user: id,
+      author: author,
+      totalAmount: totalAmount.toString(),
+    })
+    .then((res) => res.data)
+    .catch((err) => console.log(err));
+};
 
-export function getBids(id) {
-  var bids = JSON.parse(sessionStorage.getItem(bidkey) || '[]');
-  return bids.filter((bid) => bid.id === id);
-}
+export const getBids = async (id) => {
+  return await axios
+    .get('https://628a11e15da6ddfd5d5f66fa.mockapi.io/bids')
+    .then((res) => res.data)
+    .catch((err) => console.log(err));
+};
 
 export function deleteAd(id) {
   const bids = JSON.parse(localStorage.getItem(lskey) || '[]');
   const newAds = bids.filter((bid) => bid.id !== id);
 
   localStorage.setItem(lskey, JSON.stringify(newAds));
+}
+
+export function editAd(data) {
+  const posts = JSON.parse(localStorage.getItem(lskey) || '[]');
+  const newPosts = posts.map((post) => (post.id === data.id ? data : post));
+  localStorage.setItem(lskey, JSON.stringify(newPosts));
 }

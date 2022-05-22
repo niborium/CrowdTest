@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../reusable-components/button';
 
 const Faq = ({ userRole }) => {
   return (
@@ -16,28 +17,38 @@ const Faq = ({ userRole }) => {
               <h5 className='modal-title' id='faqModal'>
                 Vanliga frågor
               </h5>
-              <button
+              <Button
                 type='button'
                 className='btn-close'
                 data-bs-dismiss='modal'
                 aria-label='Close'
-              ></button>
+              />
             </div>
             <div className='m-4 modal-body'>
-              <p> <br></br>Inga frågor eller svar publicerade ännu</p>
+              <p>
+                {' '}
+                <br></br>Inga frågor eller svar publicerade ännu
+              </p>
               {userRole === 'company' && (
-                <p>[Vanliga frågor för företag] <br></br>Inga frågor eller svar publicerade ännu</p>
+                <p>
+                  [Vanliga frågor för företag] <br></br>Inga frågor eller svar
+                  publicerade ännu
+                </p>
               )}{' '}
-              {userRole === 'tester' && <p>[Vanliga frågor för testare] <br></br>Inga frågor eller svar publicerade ännu</p>}
+              {userRole === 'tester' && (
+                <p>
+                  [Vanliga frågor för testare] <br></br>Inga frågor eller svar
+                  publicerade ännu
+                </p>
+              )}
             </div>
             <div className='modal-footer'>
               <button
                 type='button'
                 className='btn btn-secondary'
                 data-bs-dismiss='modal'
-              >
-                Stäng
-              </button>
+                text='Stäng'
+              />
             </div>
           </div>
         </div>

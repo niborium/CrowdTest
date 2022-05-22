@@ -37,3 +37,22 @@ form {
   float: right;
   margin-left: 1rem;
 }
+
+.error-boundry-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.error-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.error-message {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+.error-info {
+  font-size: 1rem;
+}

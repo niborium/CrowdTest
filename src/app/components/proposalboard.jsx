@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import * as api from '../api/api.js';
+import propTypes from 'prop-types';
+import Button from '../reusable-components/button.jsx';
 
 const ProposalBoard = ({ proposalList, setProposalList, update }) => {
-
   useEffect(() => {
     api
       .getAllProposal()
@@ -24,12 +25,12 @@ const ProposalBoard = ({ proposalList, setProposalList, update }) => {
               <h5 className='modal-title' id='proposalFormModal'>
                 Förbättringsförslag
               </h5>
-              <button
+              <Button
                 type='button'
                 className='btn-close'
                 data-bs-dismiss='modal'
                 aria-label='Close'
-              ></button>
+              ></Button>
             </div>
             <div className='m-4 modal-body'>
               <div className='table-responsive'>
@@ -52,19 +53,24 @@ const ProposalBoard = ({ proposalList, setProposalList, update }) => {
               </div>
             </div>
             <div className='modal-footer'>
-              <button
+              <Button
                 type='button'
                 className='btn btn-secondary'
                 data-bs-dismiss='modal'
-              >
-                Exit
-              </button>
+                text='Stäng'
+              />
             </div>
           </div>
         </div>
       </div>
     </>
   );
+};
+
+ProposalBoard.propTypes = {
+  proposalList: propTypes.array,
+  setProposalList: propTypes.func,
+  update: propTypes.bool,
 };
 
 export default ProposalBoard;

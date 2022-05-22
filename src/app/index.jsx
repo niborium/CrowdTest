@@ -1,14 +1,18 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './components/app.jsx';
-import axios from 'axios';
+import IndexContextProvider from './context/contextAPI.js';
+import Errorboundry from './ErrorBoundry/errorboundry.jsx';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-axios.defaults.baseURL = 'https://6268f190f2c0cdabac06d6a5.mockapi.io/';
 root.render(
-  <div>
-    <App />
-  </div>
+  <Errorboundry>
+    <IndexContextProvider>
+      <div>
+        <App />
+      </div>
+    </IndexContextProvider>
+  </Errorboundry>
 );
