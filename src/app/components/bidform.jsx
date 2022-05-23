@@ -7,14 +7,14 @@ import Error from './Error.jsx';
 const BidForm = ({ currentUserData, setBidList }) => {
   const [hours, setHours] = useState(0);
   const [hourlyRate, setHourlyRate] = useState(0);
-  const { fetchBids } = useIndexContext();
+  const { fetchBids, currentUser } = useIndexContext();
   const [error, setError] = useState('');
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
       await api.postBid(
         currentUserData.id,
-        currentUserData.author,
+        currentUser,
         hours * hourlyRate
       );
       await fetchBids();
@@ -39,7 +39,7 @@ const BidForm = ({ currentUserData, setBidList }) => {
           <div className='modal-content'>
             <div className='modal-header'>
               <h5 className='modal-title' id='bidformModal'>
-                Bud från användare: {currentUserData?.author}
+                Bud från användare: {currentUser}
               </h5>
               <Button
                 type='button'

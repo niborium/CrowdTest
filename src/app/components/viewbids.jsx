@@ -6,7 +6,7 @@ import { useIndexContext } from '../context/contextAPI';
 import Error from './Error';
 const BidList = ({ bidList, setBidList, currentUserData }) => {
   bidListFiltered = bidList?.filter((bid) => bid.user === currentUserData.id);
-  const { error } = useIndexContext();
+  const { error, currentUser } = useIndexContext();
   return (
     <>
       <div
@@ -20,7 +20,7 @@ const BidList = ({ bidList, setBidList, currentUserData }) => {
           <div className='modal-content'>
             <div className='modal-header'>
               <h5 className='modal-title' id='viewbidsModal'>
-                Bud för: {currentUserData?.author}
+                Bud för: {currentUser}
               </h5>
               <Button
                 type='button'
