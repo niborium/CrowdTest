@@ -36,11 +36,17 @@ Installerad som paket (npm)
 
 ## Tjänster
 
-### [Mockapi](https://6268f190f2c0cdabac06d6a5.mockapi.io/ImprovementProposals)
+### [Mockapi](https://mockapi.io/)
 
 https://6268f190f2c0cdabac06d6a5.mockapi.io/ImprovementProposals (Endpoints: GET + POST)\
 Jag har skapat ett mockapi för att skicka och visa förbättringsförslag som inloggad användare eller företag.
 
 proposalform.jsx - Formuläret som skickar data via POST. (src/app/components)\
 proposalboard.jsx - Läser in samtliga förbättringsförslag via GET. (src/app/components)\
+api.js - Har funktioner för ovan två (för att separera UI från API funktionerna). (src/app/api)
+
+https://628a11e15da6ddfd5d5f66fa.mockapi.io/bids (Endpoints: GET + POST)\
+Jag har skapat ett mockapi för att skicka bud (som testare) och visa bud (som testare och företag).\
+bidform.jsx - Formuläret som skickar data via POST. (src/app/components)\
+viewbids.jsx - Läser in alla bud via GET. (src/app/components)\
 api.js - Har funktioner för ovan två (för att separera UI från API funktionerna). (src/app/api)
