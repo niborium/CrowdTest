@@ -34,8 +34,8 @@ function AdBoard({ data }) {
                 {userRole === 'tester' || userRole === 'company' ? (
                   <th>Visa bud</th>
                 ) : null}
-                {userRole === 'company' ? <th>Tools</th> : null}
-                {userRole === 'company' ? <th>Edit</th> : null}
+                {userRole === 'company' ? <th>Radera</th> : null}
+                {userRole === 'company' ? <th>Redigera</th> : null}
               </tr>
             </thead>
             <tbody>
@@ -98,7 +98,7 @@ function AdBoard({ data }) {
                               author: data.author,
                             })
                           }
-                          text={'radera'}
+                          text={'Radera'}
                         />
                       </td>
                       <td>
@@ -112,7 +112,7 @@ function AdBoard({ data }) {
                               author: data.author,
                             })
                           }
-                          text='edit'
+                          text='Redigera'
                         />
                       </td>
                     </>

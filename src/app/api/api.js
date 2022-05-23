@@ -1,7 +1,6 @@
 import 'regenerator-runtime/runtime';
 import axios from 'axios';
 const lskey = 'ct-list';
-const bidkey = 'bid-data';
 
 //POST (Sends new post for adboard)
 export function postNewadd(
@@ -59,6 +58,7 @@ export function getAllpost() {
   var posts = JSON.parse(localStorage.getItem(lskey) || '[]');
   return posts;
 }
+//POST (Post proposal to mockapi from  proposalform)
 export const postProposal = async (description) => {
   await axios
     .post('https://6268f190f2c0cdabac06d6a5.mockapi.io/ImprovementProposals', {
@@ -69,7 +69,7 @@ export const postProposal = async (description) => {
       throw err;
     });
 };
-
+//GET (Get all proposal from mockapi for proposalboard)
 export const getAllProposal = async () => {
   return await axios
     .get('https://6268f190f2c0cdabac06d6a5.mockapi.io/ImprovementProposals')
@@ -78,12 +78,8 @@ export const getAllProposal = async () => {
       throw err;
     });
 };
-
+//POST (Post bid to mockapi from  bidform)
 export const postBid = async (id, author, totalAmount) => {
-  // var existingBids = JSON.parse(sessionStorage.getItem(bidkey) || '[]');
-  // var newBid = { id: id, author: author, totalAmount: totalAmount.toString() };
-  // existingBids.push(newBid);
-  // sessionStorage.setItem(bidkey, JSON.stringify(existingBids));
   await axios
     .post('https://628a11e15da6ddfd5d5f66fa.mockapi.io/bids', {
       user: id,
@@ -95,10 +91,8 @@ export const postBid = async (id, author, totalAmount) => {
       throw err;
     });
 };
-
+//GET (Get bids from mockapi for viewbids)
 export const getBids = async (id) => {
-  // var bids = JSON.parse(sessionStorage.getItem(bidkey) || '[]');
-  // return bids.filter((bid) => bid.id === id);
   return await axios
     .get('https://628a11e15da6ddfd5d5f66fa.mockapi.io/bids')
     .then((res) => res.data)
@@ -106,14 +100,14 @@ export const getBids = async (id) => {
       throw err;
     });
 };
-
+//DELETE (Delete ad from localStorage - addelconfirm)
 export function deleteAd(id) {
   const bids = JSON.parse(localStorage.getItem(lskey) || '[]');
   const newAds = bids.filter((bid) => bid.id !== id);
 
   localStorage.setItem(lskey, JSON.stringify(newAds));
 }
-
+//PUT (Edit ad from localStorage - adeditform)
 export function editAd(data) {
   const posts = JSON.parse(localStorage.getItem(lskey) || '[]');
   const newPosts = posts.map((post) => (post.id === data.id ? data : post));
