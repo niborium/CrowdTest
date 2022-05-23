@@ -40,7 +40,7 @@ const AdEditForm = ({ currentUserData, list, setList }) => {
           <div className='modal-content'>
             <div className='modal-header'>
               <h5 className='modal-title' id='adEditFormModal'>
-                Edit ad - id: {toEdit?.id}
+                Redigera annons - id: {toEdit?.id}
               </h5>
               <Button
                 type='button'
