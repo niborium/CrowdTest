@@ -1,14 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as api from '../api/api.js';
 import propTypes from 'prop-types';
 import Button from '../reusable-components/button.jsx';
 
 const ProposalBoard = ({ proposalList, setProposalList, update }) => {
+  const [error, setError] = useState('');
+
   useEffect(() => {
-    api
-      .getAllProposal()
-      .then((res) => setProposalList(res))
-      .catch((err) => console.error(err));
+    const fetchProposals = async () => {
+      try {
+        const response = await api.getAllProposal();
+        setProposalList(response);
+        setError('');
+      } catch (error) {
+        console.error(error);
+        setError('Error while fetching proposals');
+      }
+    };
+    fetchProposals();
   }, [update]);
   return (
     <>
@@ -33,6 +42,7 @@ const ProposalBoard = ({ proposalList, setProposalList, update }) => {
               ></Button>
             </div>
             <div className='m-4 modal-body'>
+              {error !== '' && <Error error={error} />}
               <div className='table-responsive'>
                 <table className='table table-dark table-striped'>
                   <thead>
@@ -42,12 +52,13 @@ const ProposalBoard = ({ proposalList, setProposalList, update }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {proposalList?.map((data) => (
-                      <tr key={data.id}>
-                        <td>{data.id}</td>
-                        <td>{data.Description}</td>
-                      </tr>
-                    ))}
+                    {error === '' &&
+                      proposalList?.map((data) => (
+                        <tr key={data.id}>
+                          <td>{data.id}</td>
+                          <td>{data.Description}</td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>

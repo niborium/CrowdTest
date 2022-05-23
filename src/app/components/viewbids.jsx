@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as api from '../api/api';
 import propTypes from 'prop-types';
 import Button from '../reusable-components/button';
+import { useIndexContext } from '../context/contextAPI';
+import Error from './Error';
 const BidList = ({ bidList, setBidList, currentUserData }) => {
   bidListFiltered = bidList?.filter((bid) => bid.user === currentUserData.id);
-
+  const { error } = useIndexContext();
   return (
     <>
       <div
@@ -37,6 +39,7 @@ const BidList = ({ bidList, setBidList, currentUserData }) => {
                       <th>Belopp</th>
                     </tr>
                   </thead>
+                  {error !== '' && <Error error={error} />}
                   <tbody>
                     {bidListFiltered?.map((data) => (
                       <tr key={data?.id}>

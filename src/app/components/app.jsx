@@ -32,6 +32,7 @@ const App = () => {
     setCurrentUserData,
     bidList,
     setBidList,
+    error,
   } = useIndexContext();
 
   return (

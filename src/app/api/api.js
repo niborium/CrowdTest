@@ -65,17 +65,25 @@ export const postProposal = async (description) => {
       Description: description,
     })
     .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      throw err;
+    });
 };
 
 export const getAllProposal = async () => {
   return await axios
     .get('https://6268f190f2c0cdabac06d6a5.mockapi.io/ImprovementProposals')
     .then((res) => res.data)
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      throw err;
+    });
 };
 
 export const postBid = async (id, author, totalAmount) => {
+  // var existingBids = JSON.parse(sessionStorage.getItem(bidkey) || '[]');
+  // var newBid = { id: id, author: author, totalAmount: totalAmount.toString() };
+  // existingBids.push(newBid);
+  // sessionStorage.setItem(bidkey, JSON.stringify(existingBids));
   await axios
     .post('https://628a11e15da6ddfd5d5f66fa.mockapi.io/bids', {
       user: id,
@@ -83,14 +91,20 @@ export const postBid = async (id, author, totalAmount) => {
       totalAmount: totalAmount.toString(),
     })
     .then((res) => res.data)
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      throw err;
+    });
 };
 
 export const getBids = async (id) => {
+  // var bids = JSON.parse(sessionStorage.getItem(bidkey) || '[]');
+  // return bids.filter((bid) => bid.id === id);
   return await axios
     .get('https://628a11e15da6ddfd5d5f66fa.mockapi.io/bids')
     .then((res) => res.data)
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      throw err;
+    });
 };
 
 export function deleteAd(id) {

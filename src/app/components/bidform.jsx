@@ -3,11 +3,12 @@ import * as api from '../api/api.js';
 import propTypes from 'prop-types';
 import Button from '../reusable-components/button.jsx';
 import { useIndexContext } from '../context/contextAPI.js';
+import Error from './Error.jsx';
 const BidForm = ({ currentUserData, setBidList }) => {
   const [hours, setHours] = useState(0);
   const [hourlyRate, setHourlyRate] = useState(0);
   const { fetchBids } = useIndexContext();
-
+  const [error, setError] = useState('');
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
@@ -17,11 +18,11 @@ const BidForm = ({ currentUserData, setBidList }) => {
         hours * hourlyRate
       );
       await fetchBids();
-
       setHours(0);
       setHourlyRate(0);
     } catch (error) {
       console.error(error);
+      setError('Error while posting bid');
     }
   };
 
@@ -103,6 +104,7 @@ const BidForm = ({ currentUserData, setBidList }) => {
                   value={'Ange bud'}
                 />
               </form>
+              {error !== '' && <Error error={error} />}
             </div>
             <div className='modal-footer'>
               <Button

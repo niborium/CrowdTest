@@ -6,6 +6,7 @@ import Button from '../reusable-components/button.jsx';
 const ProposalForm = ({ setProposalList, update, setUpdate }) => {
   const [description, setDescription] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     try {
@@ -18,6 +19,7 @@ const ProposalForm = ({ setProposalList, update, setUpdate }) => {
       });
     } catch (error) {
       console.error(error);
+      setError('Error while posting proposal');
     }
   };
 
@@ -65,6 +67,7 @@ const ProposalForm = ({ setProposalList, update, setUpdate }) => {
                   value={submitting ? 'Skickar...' : 'Skicka'}
                 />
               </form>
+              {error !== '' && <Error error={error} />}
             </div>
             <div className='modal-footer'>
               <Button

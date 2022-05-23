@@ -13,6 +13,7 @@ const IndexContextProvider = ({ children }) => {
   const [userRole, setUserRole] = useState('');
   const [update, setUpdate] = useState(false);
   const [list, setList] = useState([]);
+  const [error, setError] = useState('');
 
   //* proposal list
   const [proposalList, setProposalList] = useState([]);
@@ -26,8 +27,13 @@ const IndexContextProvider = ({ children }) => {
 
   const companyName = 'CrowdTest';
   const fetchBids = async () => {
-    const bids = await api.getBids();
-    setBidList(bids);
+    try {
+      const bids = await api.getBids();
+      setBidList(bids);
+      setError('');
+    } catch (error) {
+      setError('Error fetching bids');
+    }
   };
 
   useEffect(() => {
@@ -57,6 +63,8 @@ const IndexContextProvider = ({ children }) => {
     bidList,
     setBidList,
     fetchBids,
+    error,
+    setError,
   };
   return (
     <IndexContext.Provider value={value}>{children}</IndexContext.Provider>
