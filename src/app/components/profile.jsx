@@ -26,20 +26,30 @@ const Profile = ({ currentUser, userRole }) => {
               />
             </div>
             <div className='m-4 modal-body'>
+              <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" width="150" height="150"></img><br></br><br></br><br></br>
               <p>Användare : {currentUser}</p>
               <p>Roll : {userRole}</p>
               {userRole === 'company' && (
                 <>
                   <h3>Verktyg för företag</h3>
                   <br></br>
-                  <p>Inga verktyg tillgängliga ännu.</p>
+                  <button type="button" class="btn btn-secondary">Meddelandecenter (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" class="btn btn-secondary">Ändra profilbild (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" class="btn btn-secondary">Ändra lösenord (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" class="btn btn-secondary">Statistik (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" class="btn btn-secondary">Dispyter (annonser) (Ej tillgänglig ännu)</button><br></br><br></br>  
                 </>
               )}{' '}
               {userRole === 'tester' && (
                 <>
                   <h3>Verktyg för testare</h3>
                   <br></br>
-                  <p>Inga verktyg tillgängliga ännu.</p>
+                  <button type="button" class="btn btn-secondary">Meddelandecenter (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" class="btn btn-secondary">Ändra profilbild (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" class="btn btn-secondary">Ändra lösenord (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" class="btn btn-secondary">Statistik (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" class="btn btn-secondary">Dispyter (annonser) (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" class="btn btn-secondary">Enheter (som du kan testa på) (Ej tillgänglig ännu)</button><br></br><br></br>  
                 </>
               )}
             </div>
