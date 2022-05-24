@@ -176,7 +176,6 @@ const AdEditForm = ({ currentUserData, list, setList }) => {
                       type='date'
                       className='form-control'
                       required
-                      // max={enddate}
                       defaultValue={toEdit?.startdate}
                       onChange={(event) =>
                         setData({ ...data, startdate: event.target.value })
@@ -205,7 +204,7 @@ const AdEditForm = ({ currentUserData, list, setList }) => {
                 <input
                   type='submit'
                   className='btn btn-primary mb-3'
-                  value='edit ad'
+                  value='Spara ändringar'
                 />
               </form>
             </div>

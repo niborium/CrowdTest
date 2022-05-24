@@ -39,7 +39,7 @@ const AdDelConfirm = ({ currentUserData, setList }) => {
                 className='btn btn-danger'
                 data-bs-dismiss='modal'
                 onClick={() => handleDelete(currentUserData.id)}
-                text='radera'
+                text='Radera'
               ></Button>
             </div>
             <div className='modal-footer'>
