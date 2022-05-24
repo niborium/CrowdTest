@@ -50,7 +50,7 @@ const BidList = ({ bidList, setBidList, currentUserData }) => {
                         <td>{data?.author}</td>
                         <td>{data?.totalAmount} kr</td>
                         {userRole === 'company' ? (
-                        <td><button type="button" class="btn btn-secondary">Välj testare (Ej tillgänglig ännu)</button></td>
+                        <td><button type="button" className="btn btn-secondary">Välj testare (Ej tillgänglig ännu)</button></td>
                       ) : null}
                       </tr>
                     ))}
