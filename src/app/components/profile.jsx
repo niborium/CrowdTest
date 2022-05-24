@@ -33,23 +33,23 @@ const Profile = ({ currentUser, userRole }) => {
                 <>
                   <h3>Verktyg för företag</h3>
                   <br></br>
-                  <button type="button" class="btn btn-secondary">Meddelandecenter (Ej tillgänglig ännu)</button><br></br><br></br>
-                  <button type="button" class="btn btn-secondary">Ändra profilbild (Ej tillgänglig ännu)</button><br></br><br></br>
-                  <button type="button" class="btn btn-secondary">Ändra lösenord (Ej tillgänglig ännu)</button><br></br><br></br>
-                  <button type="button" class="btn btn-secondary">Statistik (Ej tillgänglig ännu)</button><br></br><br></br>
-                  <button type="button" class="btn btn-secondary">Dispyter (annonser) (Ej tillgänglig ännu)</button><br></br><br></br>  
+                  <button type="button" className="btn btn-secondary">Meddelandecenter (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" className="btn btn-secondary">Ändra profilbild (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" className="btn btn-secondary">Ändra lösenord (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" className="btn btn-secondary">Statistik (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" className="btn btn-secondary">Dispyter (annonser) (Ej tillgänglig ännu)</button><br></br><br></br>  
                 </>
               )}{' '}
               {userRole === 'tester' && (
                 <>
                   <h3>Verktyg för testare</h3>
                   <br></br>
-                  <button type="button" class="btn btn-secondary">Meddelandecenter (Ej tillgänglig ännu)</button><br></br><br></br>
-                  <button type="button" class="btn btn-secondary">Ändra profilbild (Ej tillgänglig ännu)</button><br></br><br></br>
-                  <button type="button" class="btn btn-secondary">Ändra lösenord (Ej tillgänglig ännu)</button><br></br><br></br>
-                  <button type="button" class="btn btn-secondary">Statistik (Ej tillgänglig ännu)</button><br></br><br></br>
-                  <button type="button" class="btn btn-secondary">Dispyter (annonser) (Ej tillgänglig ännu)</button><br></br><br></br>
-                  <button type="button" class="btn btn-secondary">Enheter (som du kan testa på) (Ej tillgänglig ännu)</button><br></br><br></br>  
+                  <button type="button" className="btn btn-secondary">Meddelandecenter (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" className="btn btn-secondary">Ändra profilbild (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" className="btn btn-secondary">Ändra lösenord (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" className="btn btn-secondary">Statistik (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" className="btn btn-secondary">Dispyter (annonser) (Ej tillgänglig ännu)</button><br></br><br></br>
+                  <button type="button" className="btn btn-secondary">Enheter (som du kan testa på) (Ej tillgänglig ännu)</button><br></br><br></br>  
                 </>
               )}
             </div>
