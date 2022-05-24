@@ -6,7 +6,7 @@ import { useIndexContext } from '../context/contextAPI';
 import Error from './Error';
 const BidList = ({ bidList, setBidList, currentUserData }) => {
   bidListFiltered = bidList?.filter((bid) => bid.user === currentUserData.id);
-  const { error, currentUser } = useIndexContext();
+  const { error, currentUser, userRole } = useIndexContext();
   return (
     <>
       <div
@@ -37,6 +37,9 @@ const BidList = ({ bidList, setBidList, currentUserData }) => {
                       <th>#id</th>
                       <th>Budgivare</th>
                       <th>Belopp</th>
+                      {userRole === 'company' ? (
+                        <th>Välj testare</th>
+                      ) : null}
                     </tr>
                   </thead>
                   {error !== '' && <Error error={error} />}
@@ -46,6 +49,9 @@ const BidList = ({ bidList, setBidList, currentUserData }) => {
                         <td>{data?.id}</td>
                         <td>{data?.author}</td>
                         <td>{data?.totalAmount} kr</td>
+                        {userRole === 'company' ? (
+                        <td><button type="button" class="btn btn-secondary">Välj testare (Ej tillgänglig ännu)</button></td>
+                      ) : null}
                       </tr>
                     ))}
                   </tbody>
