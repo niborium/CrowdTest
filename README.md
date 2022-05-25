@@ -1,6 +1,6 @@
 # CrowdTest
 
-1. Klona ner repot från GitHub (https://github.com/niborium/CrowdTest)
+1. Uppe till höger i repot (https://github.com/niborium/CrowdTest) så kan du trycka på Code. Här kan du välja att ladda ner (Download ZIP) eller välja att klona ner repot med git clone.
 2. Öppna projektet i din valda kodeditor.
 3. Kör därefter `npm ci ` i terminalen.
 4. Kör därefter `npm start` följande meddelande visas:
