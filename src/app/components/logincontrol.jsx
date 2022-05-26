@@ -1,4 +1,6 @@
 import React from 'react';
+import propTypes from 'prop-types';
+import Button from '../reusable-components/button';
 
 const LoginControl = ({ data }) => {
   const {
@@ -25,68 +27,73 @@ const LoginControl = ({ data }) => {
     <>
       {isLoggedIn ? (
         <>
-          <button
+          <Button
             id='btnProfile'
             className='btn btn-primary'
             data-bs-toggle='modal'
             data-bs-target='#profileModal'
-          >
-            Profil
-          </button>
+            text='Profil'
+          />
           {userRole === 'company' ? (
             <>
-              <button
+              <Button
                 id='btnLo'
                 className='btn btn-danger'
                 onClick={() => handleLogoutClick()}
-              >
-                Logga ut som {currentUser}
-              </button>
+                text={`Logga ut som ${currentUser}`}
+              />
               <br></br>
               <br></br>
-              <button
+              <Button
                 id='btnAf'
                 className='btn btn-primary'
                 data-bs-toggle='modal'
                 data-bs-target='#adformModal'
-              >
-                Lägg till ny annons
-              </button>
+                text='Lägg till ny annons'
+              />
 
               <br />
               <br />
             </>
           ) : (
-            <button
+            <Button
               id='btnLo'
               className='btn btn-danger'
               onClick={() => handleLogoutClick()}
-            >
-              Logga ut som {currentUser}
-            </button>
+              text={`Logga ut som ${currentUser}`}
+            />
           )}
         </>
       ) : (
         <>
-          <button
+          <Button
             id='btnLat'
             className='btn btn-success'
             onClick={() => handleLoginClick('testkonto-testare', 'tester')}
-          >
-            Logga in som testare
-          </button>
+            text='Logga in som testare'
+          />
           <br></br>
           <br></br>
-          <button
+          <Button
             id='btnLac'
             className='btn btn-success'
             onClick={() => handleLoginClick('testkonto-företag', 'company')}
-          >
-            Logga in som företag
-          </button>
+            text='Logga in som företag'
+          />
         </>
       )}
     </>
   );
+};
+
+LoginControl.propTypes = {
+  data: propTypes.shape({
+    isLoggedIn: propTypes.bool,
+    currentUser: propTypes.string,
+    userRole: propTypes.string,
+    setIsLoggedIn: propTypes.func,
+    setUserRole: propTypes.func,
+    setCurrentUser: propTypes.func,
+  }),
 };
 export default LoginControl;

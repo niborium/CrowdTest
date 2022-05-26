@@ -1,5 +1,7 @@
 import React from 'react';
 import * as api from '../api/api';
+import propTypes from 'prop-types';
+import Button from '../reusable-components/button';
 
 const AdDelConfirm = ({ currentUserData, setList }) => {
   const handleDelete = (id) => {
@@ -26,34 +28,38 @@ const AdDelConfirm = ({ currentUserData, setList }) => {
                 className='btn-close'
                 data-bs-dismiss='modal'
                 aria-label='Close'
-              ></button>
+              />
             </div>
             <div className='m-4 modal-body'>
               <p>
-                Är du säker på att du vill ta bort annons-id: {currentUserData.id}?
+                Är du säker på att du vill ta bort annons-id:{' '}
+                {currentUserData.id}?
               </p>
-              <button
+              <Button
                 className='btn btn-danger'
                 data-bs-dismiss='modal'
                 onClick={() => handleDelete(currentUserData.id)}
-              >
-                Radera
-              </button>
+                text='Radera'
+              ></Button>
             </div>
             <div className='modal-footer'>
-              <button
+              <Button
                 type='button'
                 className='btn btn-secondary'
                 data-bs-dismiss='modal'
-              >
-                Stäng
-              </button>
+                text='Stäng'
+              />
             </div>
           </div>
         </div>
       </div>
     </>
   );
+};
+
+AdDelConfirm.propTypes = {
+  currentUserData: propTypes.object,
+  setList: propTypes.func,
 };
 
 export default AdDelConfirm;

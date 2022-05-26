@@ -1,5 +1,6 @@
 import React from 'react';
-
+import propTypes from 'prop-types';
+import Button from '../reusable-components/button';
 export function Footer({ company, author, data }) {
   const {
     isLoggedIn,
@@ -10,16 +11,16 @@ export function Footer({ company, author, data }) {
     setCurrentUser,
   } = data;
 
-  const handleLoginClick = (setAccount, setRole) => {
-    setIsLoggedIn(true);
-    setCurrentUser(setAccount);
-    setUserRole(setRole);
-  };
-  const handleLogoutClick = () => {
-    setIsLoggedIn(false);
-    setUserRole('');
-    setCurrentUser('');
-  };
+  // const handleLoginClick = (setAccount, setRole) => {
+  //   setIsLoggedIn(true);
+  //   setCurrentUser(setAccount);
+  //   setUserRole(setRole);
+  // };
+  // const handleLogoutClick = () => {
+  //   setIsLoggedIn(false);
+  //   setUserRole('');
+  //   setCurrentUser('');
+  // };
   return (
     <>
       <footer>
@@ -28,36 +29,33 @@ export function Footer({ company, author, data }) {
         </p>
 
         <div className='btn-container'>
-          <button
+          <Button
             id='btnFaq'
             className='btn btn-primary'
             data-bs-toggle='modal'
             data-bs-target='#faqModal'
             style={{ float: 'right', margin: '0 1rem' }}
-          >
-            Vanliga frågor
-          </button>
+            text='Vanliga frågor'
+          />
           {isLoggedIn && (
             <>
-              <button
+              <Button
                 id='btnProposal1'
                 className='btn btn-primary'
                 data-bs-toggle='modal'
                 data-bs-target='#proposalFormModal'
                 style={{ marginLeft: '1rem' }}
-              >
-                Nytt förbättringsförslag
-              </button>
+                text='Nytt förbättringsförslag'
+              />
 
-              <button
+              <Button
                 id='btnProposal2'
                 className='btn btn-primary '
                 data-bs-toggle='modal'
                 data-bs-target='#proposalBoardModal'
                 style={{ marginLeft: '10px' }}
-              >
-                Visa förbättringsförslag
-              </button>
+                text='Förbättringsförslag'
+              />
             </>
           )}
         </div>
@@ -65,3 +63,16 @@ export function Footer({ company, author, data }) {
     </>
   );
 }
+
+Footer.propTypes = {
+  company: propTypes.string,
+  author: propTypes.string,
+  data: propTypes.shape({
+    currentUser: propTypes.string,
+    isLoggedIn: propTypes.bool,
+    userRole: propTypes.string,
+    setIsLoggedIn: propTypes.func,
+    setUserRole: propTypes.func,
+    setCurrentUser: propTypes.func,
+  }),
+};

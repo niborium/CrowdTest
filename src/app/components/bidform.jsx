@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import * as api from '../api/api.js';
+import propTypes from 'prop-types';
+import Button from '../reusable-components/button.jsx';
+import { useIndexContext } from '../context/contextAPI.js';
+import Error from './Error.jsx';
 const BidForm = ({ currentUserData, setBidList }) => {
   const [hours, setHours] = useState(0);
   const [hourlyRate, setHourlyRate] = useState(0);
-
-  const handleSubmit = (e) => {
+  const { fetchBids, currentUser } = useIndexContext();
+  const [error, setError] = useState('');
+  const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      api.postBid(
+      await api.postBid(
         currentUserData.id,
-        currentUserData.author,
+        currentUser,
         hours * hourlyRate
       );
+      await fetchBids();
       setHours(0);
       setHourlyRate(0);
-      setBidList(api.getBids(currentUserData.id));
     } catch (error) {
       console.error(error);
+      setError('Error while posting bid');
     }
   };
 
@@ -33,14 +39,14 @@ const BidForm = ({ currentUserData, setBidList }) => {
           <div className='modal-content'>
             <div className='modal-header'>
               <h5 className='modal-title' id='bidformModal'>
-                Bud från användare: {currentUserData?.author}
+                Bud från användare: {currentUser}
               </h5>
-              <button
+              <Button
                 type='button'
                 className='btn-close'
                 data-bs-dismiss='modal'
                 aria-label='Close'
-              ></button>
+              />
             </div>
             <div className='modal-body'>
               <form onSubmit={handleSubmit}>
@@ -98,21 +104,26 @@ const BidForm = ({ currentUserData, setBidList }) => {
                   value={'Ange bud'}
                 />
               </form>
+              {error !== '' && <Error error={error} />}
             </div>
             <div className='modal-footer'>
-              <button
+              <Button
                 type='button'
                 className='btn btn-secondary'
                 data-bs-dismiss='modal'
-              >
-                Stäng
-              </button>
+                text='Stäng'
+              />
             </div>
           </div>
         </div>
       </div>
     </>
   );
+};
+
+BidForm.propTypes = {
+  currentUserData: propTypes.object,
+  setBidList: propTypes.func,
 };
 
 export default BidForm;

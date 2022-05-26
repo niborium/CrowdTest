@@ -1,5 +1,7 @@
+import propTypes from 'prop-types';
 import React from 'react';
 import * as api from '../api/api.js';
+import Button from '../reusable-components/button.jsx';
 
 export class AdForm extends React.Component {
   constructor(props) {
@@ -73,12 +75,12 @@ export class AdForm extends React.Component {
                 <h5 className='modal-title' id='adformModalLabel'>
                   Lägg till ny annons
                 </h5>
-                <button
+                <Button
                   type='button'
                   className='btn-close'
                   data-bs-dismiss='modal'
                   aria-label='Close'
-                ></button>
+                />
               </div>
               <div className='modal-body'>
                 <form onSubmit={this.handleSubmit}>
@@ -239,13 +241,12 @@ export class AdForm extends React.Component {
                 </form>
               </div>
               <div className='modal-footer'>
-                <button
+                <Button
                   type='button'
                   className='btn btn-secondary'
                   data-bs-dismiss='modal'
-                >
-                  Stäng
-                </button>
+                  text='Stäng'
+                />
               </div>
             </div>
           </div>
@@ -254,3 +255,8 @@ export class AdForm extends React.Component {
     );
   }
 }
+
+AdForm.propTypes = {
+  currentUser: propTypes.string,
+  setList: propTypes.func,
+};
