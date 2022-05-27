@@ -16,6 +16,14 @@
 
 ## Externa bibliotek
 
+### [React](https://www.npmjs.com/package/react)
+
+React är ett JavaScript-bibliotek för att skapa användargränssnitt.
+
+### [React-dom](https://www.npmjs.com/package/react)
+
+Detta paket fungerar som ingångspunkten till DOM- och serverrenderare för React. Den är avsedd att paras ihop med det generiska React-paketet.
+
 ### [Axios](https://www.npmjs.com/package/axios)
 
 Axios är en promise-baserad HTTP-klient för webbläsaren och Node.js. Axios gör det enkelt att skicka asynkrona HTTP-förfrågningar till REST-slutpunkter och utföra CRUD-operationer. Det kan användas i vanlig JavaScript eller med ett bibliotek som Vue eller React.
